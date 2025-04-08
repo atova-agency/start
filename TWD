@@ -1,0 +1,1 @@
+tailwindcss --input twd_in.css --output twd_atova.css --cwd static/css/
