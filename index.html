@@ -8,24 +8,28 @@
         <meta content="Portfolio HTML Template" name="description">
 
         <!-- Favicon -->
-        <link href="static/img/a_atovy-ico.png" rel="icon">
+        <link href="static/img/a_atovy-ico.svg" rel="icon">
 
         <!-- Google Fonts -->
         <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">-->
 
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/solid.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css" rel="stylesheet">
+        <!--link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"-->
+<!--
         <link href="static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="static/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
+-->
         <!-- Template Stylesheet -->
         <link href="static/css/style.css" rel="stylesheet">
         <link href="static/css/styleAtova.css" media="screen" rel="stylesheet">
 
-        <link rel="stylesheet" href="static/css/twd_atova.css" />
-        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+        <link rel="stylesheet" href="static/css/twd_atova.css">
+        <!-- script src="https://unpkg.com/@tailwindcss/browser@4"></script-->
     </head>
 
 <body>
@@ -37,7 +41,7 @@
         </div>
 
         <nav id="nav-menu-container">
-            <ul class="nav-menu">
+            <ul class="nav-menu invisible">
                 <li class="menu-active"><a href="#header-carousel">Accueil</a></li>
                 <li><a href="#about">Atova</a></li>
                 <li><a href="#services">Nos services</a></li>
@@ -146,29 +150,48 @@
                 <div class="row">
                     <div class="col-md-4 about-col">
                         <div class="about-content">
-                            <i class="fa fa-history"></i>
-                            <h2>Atova</h2>
+                            <i class="fa fa-hourglass"></i>
+                            <h2>Spike your concept</h2>
                             <p>
-                              Designer le concept 
+                              Timeboxed Discovery Phase for Design and Software Prototype Development<br/>
+                              Skipping this crucial step will lead to costly rework down the line. 
                             </p>
+                            <div  class="text-justify-left" >
+                             <ul class="text-left text-white [&>li>p]:inline ">
+                               <li>- Provide evidence that the product is really what you want</li>
+                               <li>- Validate ideas and define the MVP/Demo</li>
+                               <li>- Prototype ready for implementation in 6 weeks or less</li>                              
+                            </ul> 
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-4 about-col">
                         <div class="about-content">
-                            <i class="fa fa-bullseye"></i>
+                            <i class="fa-solid fa-arrows-to-dot"></i>
                             <h2>Mission</h2>
-                            <p>
-                               Définir des objectifs clairs et précis pour votre projet.
+                            <p class="text-left">
+                               Anticipate and mitigate risks! Start with a working demo before committing to full-scale development. 
+                            </p>
+                             <p>
+                               Anticipez et atténuez les risques ! Commencez par un demo avant de vous lancer dans le développement à grande échelle.
+                            </p>
+                            <p class="text-right">
+                              Andraso ary ahena ny olana! Atombohy amin'ny drafitra azo ampiasaina alohan'ny hidirana amin'ny fampandrosoana feno.
                             </p>
                         </div>
                     </div>
                     <div class="col-md-4 about-col">
                         <div class="about-content">
-                            <i class="fa fa-eye"></i>
-                            <h2>Vision</h2>
-                            <p>
-                             Bonne collaboration , communication efficaces
-                            </p>
+                            <i class="fa-solid fa-cash-register"></i>
+                            <h2>Simple pricing</h2>
+                            <div  class="text-justify-left" >
+                             <ul class="text-left text-white [&>li>p]:inline ">
+                             <li>- Project spike: 3,000,000 ar</li>
+                             <li>- Web Components: &ge; 100 000 ar</li>
+                             <li>- Local-First apps: &ge; 5 200 000 ar</li>
+                             <li>- Rust - Wasm secure project: &ge; 1 500 000 ar / module</li>
+                            </ul> 
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -182,42 +205,47 @@
                         <div class="section-header">
                             <h2>Nos Services</h2>
                             <p>
-                                Créez des applications qui représentent vraiment votre entreprise grâce à nos services de développement mobile et desktop
+                                Avant de depenser votre budget de projet Informatique, valider votre concept/produit. 
+                                <br/> Vous avez déja un site web? Modernizer votre investissement numerique avec des "web components"
+<br/>
                             </p>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-lg-4">
                                 <div class="service-col">
-                                    <div class="service-icon"><i class="fa fa-television"></i></div>
-                                    <h3>Design UI/UX </h3>
-                                    <div class="service-detail">
-                                        UX l'expérience utilisateur sur un site web, un logiciel ou une application mobile.L'UI design représente l'interface utilisateur 
-                                        les fenêtres, boutons, liens et autres éléments textuels et visuels avec lesquels va interagir l'utilisateur.
+                                    <div class="service-icon"><i class="fa-solid fa-flask"></i></div>
+                                    <h3>Project Spike </h3>
+                                    <div id="service_spike" class="service-detail">
+                                        <ul class="text-left text-white [&>li>p]:inline ">
+                                         <li>- requirement gathering & feasability study</li>
+                                         <li>- Demo & usability tests</li>
+                                         <li>- Stop at anytime and keep the current draft</li>
+                                        </ul> 
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4">
                                 <div class="service-col">
-                                    <div class="service-icon"><i class="fa fa-laptop"></i> </div>
-                                    <h3>Web Development</h3>
-                                    <div class="service-detail">
+                                    <div class="service-icon"><i class="fa fa-puzzle-piece"></i> </div>
+                                    <h3>Web Components</h3>
+                                    <div id="service_components" class="service-detail">
                                         développement Web sur mesure : solutions à la pointe du marché / collaboration flexible adapté à une technologie pertinente
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4">
                                 <div class="service-col">
-                                    <div class="service-icon"><i class="fa fa-android"></i> </div>
+                                    <div class="service-icon"><i class="fa-solid fa-mobile-screen"></i> </div>
                                     <h3>Apps Development</h3>
-                                    <div class="service-detail">
+                                    <div id="apps" class="service-detail">
                                         Développe, teste, programme et maintient des applications pour une plate-forme spécifique , telle qu'un appareil mobile, le Web ou un autre système d'exploitation.
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-lg-4">
                                 <div class="service-col">
-                                    <div class="service-icon"><i class="fa fa-phone"></i> </div>
-                                    <h3>Support & IT</h3>
+                                    <div class="service-icon"><i class="fa-brands fa-rust"></i> </div>
+                                    <h3>Secure software development</h3>
                                     <div class="service-detail">
                                         Soutiens technique du traitement de l'information :
                                         - les systèmes informatiques.
@@ -230,6 +258,24 @@
                     </div>
                 </div>
                 <!-- Services End -->
+
+                <!-- DEMO  -->
+<div class="m-4 grid gap-4 sm:grid-cols-2 text-white font-medium">
+  <div class="min-h-[100px] rounded-lg shadow-sm bg-[#cf3f24] p-2">Qu'est ce qu'un `Spike`. C'est une activité d'exploration et de recherche, souvent time-boxed, visant à réduire le risque ou à mieux comprendre un aspect complexe d'une fonctionnalité avant de l'implémenter.</div>
+  <div class="min-h-[100px] rounded-lg shadow-sm bg-[#686869] p-2"></div>
+</div>
+<div class="m-4 grid gap-4 sm:grid-cols-4 text-white">
+  <div class="min-h-[100px] rounded-lg shadow-sm bg-[#cf3f24] p-2"></div>
+  <div class="min-h-[100px] rounded-lg shadow-sm bg-[#686869] p-2"></div>
+  <div class="min-h-[100px] rounded-lg shadow-sm bg-[#cf3f24] p-2"></div>
+  <div class="min-h-[100px] rounded-lg shadow-sm bg-[#686869] p-2"></div>
+</div>
+<hr>
+<div class="m-4 grid grid-cols-1 gap-4 sm:grid-cols-12 text-white">
+  <div class="min-h-[100px] rounded-lg shadow-sm bg-[#cf3f24] p-2 sm:col-span-2"><a href="https://kerkour.com/rust-in-production-2021" target="_blank"><img src="static/img/fa-brands-fa-rust.svg" /></a></div>
+  <div class="min-h-[100px] rounded-lg shadow-sm bg-[#686869] p-2 sm:col-span-10"><h2>Pourquoi Rust?</h2>rapide, fiable, productif et économe en mémoire</div>
+</div>
+                <!-- DEMO End -->
 
                  <!-- Portfolio Start -->
         <div id="portfolio">
@@ -335,14 +381,17 @@
                     <form action="" method="">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" placeholder="Nom et prénom" />
+                                <input type="text" class="form-control" placeholder="Nom" />
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="email" class="form-control" placeholder="Email" />
+                                <input type="text" class="form-control" placeholder="Prénom" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Objet" />
+                            <input type="email" class="form-control" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Sujet" />
                         </div>
                         <div class="form-group">
                             <textarea class="form-control" rows="5" placeholder="Message"></textarea>
@@ -394,6 +443,7 @@
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<!--
 <script src="lib/easing/easing.min.js"></script>
 <script src="lib/menuspy/menuspy.min.js"></script>
 <script src="lib/waypoints/waypoints.min.js"></script>
@@ -401,14 +451,15 @@
 <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 <script src="lib/isotope/isotope.pkgd.min.js"></script>
 <script src="lib/lightbox/js/lightbox.min.js"></script>
-
+-->
 
 <!-- Template Javascript -->
 <script src="static/js/main.js"></script>
 <script src="static/js/app.js"></script>
 <script src="static/js/particles.js"></script>
+<!--script type="module" src="static/js/counterUp2"></script -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script-->
 <script src="static/js/script.js"></script>
 
 </body>

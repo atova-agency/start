@@ -61,7 +61,9 @@
     
     // Navigation active state on scroll
     var elm = document.querySelector('.nav-menu');
-    var ms = new MenuSpy(elm,{
+/*
+    //BUG: Where does MenuSpy come from?
+    var ms = new MenuSpy(elm,{                  
         activeClass   : 'menu-active',
         threshold     : 71,
         enableLocationHash: false
@@ -95,7 +97,7 @@
         loop: true,
         items: 1
     });
-    
+*/    
     
     // Back to top button
     $(window).scroll(function () {
