@@ -17,17 +17,25 @@ mv tailwindcss-linux-x64 ~/bin/tailwindcss
 chmod +x ~/bin/tailwindcss
 ```
 
+[setting up tailwind v 4 using the standalone CLI (no node.js)](https://github.com/tailwindlabs/tailwindcss/discussions/15855){target="_blank"}
 
 ```js
 // filename: static/css/twd_in.css
 
-@import "tailwindcss" source("../..");
+@import "tailwindcss" source("../..");       
+
+//NOTE: Tell Tailwind where your source files are
+// index.html is 2 levels above hence the `../..`
 
 ```
+
+Generate the twd css file that will use in our html
 
 ```sh
 tailwindcss --input twd_in.css --output twd_atova.css --cwd static/css/
 ```
+
+Now we can use the `twd_atova.css` file like any other css file, because it is like any other css files.
 
 ```html
 <!doctype html>
