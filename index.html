@@ -39,7 +39,7 @@
         <div id="logo" class="pull-left">
             <a href="index-ATOVA.html"><img src="static/img/Logo_atovaSA.svg" alt="Logo" /></a>
         </div>
-
+<!--
         <nav id="nav-menu-container">
             <ul class="nav-menu invisible">
                 <li class="menu-active"><a href="#header-carousel">Accueil</a></li>
@@ -49,6 +49,15 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+-->
+        <nav>
+            <ul class="flex gap-4 float-right">
+                <li id="select_en"><a href="#en"><img width="14px"  src="static/img/flags/gb.svg" /></a></li>
+                <li id="select_mg"><a href="#mg"><img width="14px" src="static/img/flags/mg.svg" /></a></li>
+                <li id="select_fr"><a href="#fr"><img width="14px"  src="static/img/flags/fr.svg" /></a></li>
+            </ul>
+        </nav>
+
     </div>
 </div>
 <!-- Header Nav End -->
@@ -130,6 +139,11 @@
 </div>
 
 <!-- Header carousel End-->
+<style>
+.en {display: block;}
+.mg {display: none;}
+.fr {display: none;}
+</style>
 
         <!-- Atova software agency Start-->
         <div id="about">
@@ -140,15 +154,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="welcome m-auto">
-                            <p>
-                                Découvrez la faisabilité de votre idée. Verifiez votre solution avec un prototype.
+<p class="fr">
+Découvrez la faisabilité de votre idée. Verifiez votre solution avec un prototype.
 Démontrez son impact avec un Demo fonctionelle.
-                            </p>
-<p>
+</p>
+<p class="en">
 Discover the feasibility of your idea. Test your solution with a prototype.
 Demonstrate its impact with a functional demo.
 </p>
-<p>
+<p class="mg">
 Fantaro ny maha-mety ny hevitrao. Hamarino ny vahaolanao amin'ny prototype.
 Asehoy ny fiantraikan'izany amin'ny alalan'ny demo azo ampiasaina.
 </p>
@@ -178,13 +192,13 @@ Asehoy ny fiantraikan'izany amin'ny alalan'ny demo azo ampiasaina.
                         <div class="about-content">
                             <i class="fa-solid fa-arrows-to-dot"></i>
                             <h2>Mission</h2>
-                            <p class="text-left">
+                            <p class="en text-left">
                                Anticipate and mitigate risks! Start with a working demo before committing to full-scale development. 
                             </p>
-                             <p>
+                             <p class="fr">
                                Anticipez et atténuez les risques ! Commencez par un demo avant de vous lancer dans le développement à grande échelle.
                             </p>
-                            <p class="text-right">
+                            <p class="mg text-right">
                               Andraso ary ahena ny olana! Atombohy amin'ny drafitra azo ampiasaina alohan'ny hidirana amin'ny fampandrosoana feno.
                             </p>
                         </div>
@@ -305,6 +319,20 @@ conçu pour les applications nécessitant des performances élevées et une gran
 Rust garantit que les programmes ne peuvent pas accéder à des zones de mémoire non valides, évitant ainsi les erreurs de débordement de tampon et autres bugs de sécurité courants dans les langages
 concue il y a plus de 40 ans.
 <br>Les utilisateur de Rust sont entre autre: Firefox, Dropbox, Cloudflare, Google (Alphabet), Amazon, Microsoft, Meta, et bien d'autre encore, y compris <i>Atova :-)</i>
+<br/><br/>
+<h3 class="text-white">What is Rust? en_pages only</h3>
+
+Rust is a systems programming language designed to prioritise performance and safety. Maintained by the Rust Foundation, 
+the language has quickly risen to prominence for its ability to eliminate common programming pitfalls such as null pointer dereferencing, 
+data races, and memory leaks.
+
+Unlike traditional systems languages like C and C++, Rust offers advanced features like:
+<br>
+<br><em>Memory Safety</em>: Rust’s ownership model ensures that memory-related bugs are avoided during compile time.
+<br><em>Concurrency</em>: Rust’s concurrency model empowers developers to write parallel code without the risk of data races.
+<br><em>High Performance</em>: Rust compiles to native machine code, making it comparable to C++ in terms of speed.
+<br/>
+https://digitaloneagency.com.au/rust-development-in-2025/
 </div>
 
 <div class="min-h-[100px] rounded-lg shadow-sm bg-[#cf3f24] p-2 sm:col-span-10">
@@ -507,5 +535,43 @@ Rust peut être utilisé efficacement pour développer des logiciels locaux, exp
 <!--script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script-->
 <script src="static/js/script.js"></script>
 
+<!-- SELECT LANG -->
+<script>
+// Select all elements with the class name
+const en_elements = document.getElementsByClassName('en'); 
+const mg_elements = document.getElementsByClassName('mg'); 
+const fr_elements = document.getElementsByClassName('fr'); 
+
+// Loop through the elements and apply changes 
+function toggle(elements, style) { // elements_list, 'block'
+  //console.log("elem length: " + elements.length);
+  
+  for (let i = 0; i < elements.length; i++) { 
+    elements[i].style.display = style; 
+  }
+}
+
+select_en.addEventListener("click", (e) => {
+  toggle(en_elements, 'block');
+  toggle(mg_elements, 'none');  
+  toggle(fr_elements, 'none');
+  //console.log("en clicked");
+});
+
+select_mg.addEventListener("click", (e) => {
+  toggle(en_elements, 'none');
+  toggle(mg_elements, 'block');  
+  toggle(fr_elements, 'none');
+  //console.log("mg clicked");
+});
+
+select_fr.addEventListener("click", (e) => {
+  toggle(en_elements, 'none');
+  toggle(mg_elements, 'none');  
+  toggle(fr_elements, 'block');
+  //console.log("fr clicked");
+});
+
+</script>
 </body>
 </html>
