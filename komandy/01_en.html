@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kômandy - Empowering Builders & Construction Teams</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+            scroll-behavior: smooth;
+        }
+        
+        .construction-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23f59e0b' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .hard-hat-icon::before {
+            content: "⛑️";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            font-size: 24px;
+            transform: rotate(-15deg);
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #f59e0b;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header/Navigation -->
+    <header class="bg-gray-900 text-white sticky top-0 z-50 shadow-xl">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="bg-yellow-500 text-gray-900 font-bold text-xl px-3 py-2 rounded">Kômandy</div>
+                <span class="text-sm bg-gray-700 px-2 py-1 rounded">v2.0</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#products" class="nav-link font-medium hover:text-yellow-400">Products</a>
+                <a href="#modules" class="nav-link font-medium hover:text-yellow-400">Modules</a>
+                <a href="#features" class="nav-link font-medium hover:text-yellow-400">Features</a>
+                <a href="#contact" class="nav-link font-medium hover:text-yellow-400">Contact</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold px-4 py-2 rounded-md transition duration-300">
+                    Get Started
+                </button>
+                <button class="md:hidden text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="construction-pattern">
+        <div class="container mx-auto px-4 py-20 md:py-28 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                    <span class="block">Empowering Builders,</span>
+                    <span class="block text-yellow-600">Workers & Dreamers</span>
+                </h1>
+                <p class="text-lg text-gray-700 mb-8 max-w-xl">
+                    Kômandy provides the digital tools construction teams need to build efficiently, work productively, and achieve ambitious goals. Our suite of products is designed for the realities of construction work.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-8 py-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
+                        Explore Products
+                    </button>
+                    <button class="border-2 border-gray-800 hover:bg-gray-800 hover:text-white text-gray-900 font-bold px-8 py-4 rounded-lg transition duration-300">
+                        Schedule Demo
+                    </button>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center relative">
+                <div class="relative">
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-yellow-400 rounded-lg opacity-20"></div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-gray-800 rounded-lg opacity-20"></div>
+                    <div class="bg-white rounded-xl shadow-2xl p-6 relative z-10 border-2 border-gray-200">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-800 text-white p-4 rounded-lg">
+                                <i class="fas fa-hard-hat text-yellow-400 text-2xl mb-2"></i>
+                                <h3 class="font-bold">kOperations</h3>
+                                <p class="text-sm">Field and on-site solutions</p>
+                            </div>
+                            <div class="bg-yellow-500 text-gray-900 p-4 rounded-lg">
+                                <i class="fas fa-desktop text-gray-800 text-2xl mb-2"></i>
+                                <h3 class="font-bold">kLogistics</h3>
+                                <p class="text-sm">Desktop/web administration</p>
+                            </div>
+                            <div class="bg-gray-100 p-4 rounded-lg border border-gray-300">
+                                <i class="fas fa-truck text-yellow-500 text-2xl mb-2"></i>
+                                <h3 class="font-bold">kFleet</h3>
+                                <p class="text-sm">Vehicle & machinery management</p>
+                            </div>
+                            <div class="bg-gray-100 p-4 rounded-lg border border-gray-300">
+                                <i class="fas fa-bolt text-yellow-500 text-2xl mb-2"></i>
+                                <h3 class="font-bold">kPower</h3>
+                                <p class="text-sm">Generator rental & maintenance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="bg-gray-900 text-white py-16">
+        <div class="container mx-auto px-4 text-center max-w-4xl">
+            <div class="inline-block bg-yellow-500 text-gray-900 px-4 py-1 rounded-full mb-6 font-bold">
+                Our Mission
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                Helping Builders Build, Workers Work, and Dreamers Achieve
+            </h2>
+            <p class="text-xl text-gray-300 leading-relaxed">
+                Kômandy develops mobile applications accessible in the field or offline, paired with powerful web and desktop dashboards for administrators. Our tools bridge the gap between office planning and on-site execution.
+            </p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Product Suite</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Specialized solutions for every aspect of construction management</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-gray-50 rounded-xl shadow-lg p-6 card-hover border-t-4 border-yellow-500">
+                    <div class="text-yellow-500 text-3xl mb-4">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">kFleet</h3>
+                    <p class="text-gray-600 mb-4">Rental and maintenance management for vehicles, engines, and machinery with parts inventory.</p>
+                    <div class="flex">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">kLogistics</span>
+                        <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded ml-2">kOperations</span>
+                    </div>
+                </div>
+                
+                <!-- Product Card 2 -->
+                <div class="bg-gray-50 rounded-xl shadow-lg p-6 card-hover border-t-4 border-yellow-500">
+                    <div class="text-yellow-500 text-3xl mb-4">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">kPower</h3>
+                    <p class="text-gray-600 mb-4">Rental management and maintenance of power generators for construction sites.</p>
+                    <div class="flex">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">kLogistics</span>
+                        <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded ml-2">kOperations</span>
+                    </div>
+                </div>
+                
+                <!-- Product Card 3 -->
+                <div class="bg-gray-50 rounded-xl shadow-lg p-6 card-hover border-t-4 border-yellow-500">
+                    <div class="text-yellow-500 text-3xl mb-4">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">kBuildyard</h3>
+                    <p class="text-gray-600 mb-4">Construction site management by location, task, work team, timekeeping and parts inventory.</p>
+                    <div class="flex">
+                        <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">kOperations</span>
+                    </div>
+                </div>
+                
+                <!-- Product Card 4 -->
+                <div class="bg-gray-50 rounded-xl shadow-lg p-6 card-hover border-t-4 border-yellow-500">
+                    <div class="text-yellow-500 text-3xl mb-4">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">kZoky</h3>
+                    <p class="text-gray-600 mb-4">Site monitoring, equipment warehouse monitoring, and restricted access areas surveillance.</p>
+                    <div class="flex">
+                        <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">kOperations</span>
+                    </div>
+                </div>
+                
+                <!-- Product Card 5 -->
+                <div class="bg-gray-50 rounded-xl shadow-lg p-6 card-hover border-t-4 border-yellow-500">
+                    <div class="text-yellow-500 text-3xl mb-4">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">kTimeTrack</h3>
+                    <p class="text-gray-600 mb-4">Time punch-in and monitoring of worker attendance, leave requests, presence and availability.</p>
+                    <div class="flex">
+                        <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">kOperations</span>
+                    </div>
+                </div>
+                
+                <!-- Coming Soon Card -->
+                <div class="bg-gray-50 rounded-xl shadow-lg p-6 border-2 border-dashed border-gray-300 flex flex-col justify-center items-center">
+                    <div class="text-gray-400 text-3xl mb-4">
+                        <i class="fas fa-plus-circle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-400 mb-2">More Solutions</h3>
+                    <p class="text-gray-500 text-center">We're constantly developing new tools to help construction teams succeed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section id="modules" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Modules</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The foundation of our product ecosystem</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <!-- kLogistics -->
+                <div class="lg:w-1/2 bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-yellow-500 text-gray-900 p-6">
+                        <h3 class="text-2xl font-bold flex items-center">
+                            <i class="fas fa-desktop mr-3"></i> kLogistics
+                        </h3>
+                        <p class="mt-2">Desktop/web-oriented modules for administrators and office staff</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-boxes text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">kInventory</h4>
+                                    <p class="text-gray-600">Comprehensive inventory management system</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-shipping-fast text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">kDeploy</h4>
+                                    <p class="text-gray-600">Rental management, delivery, and distribution</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-shopping-cart text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">kProcurement</h4>
+                                    <p class="text-gray-600">Purchase management and inventory renewal</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- kOperations -->
+                <div class="lg:w-1/2 bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="bg-gray-800 text-white p-6">
+                        <h3 class="text-2xl font-bold flex items-center">
+                            <i class="fas fa-hard-hat mr-3"></i> kOperations
+                        </h3>
+                        <p class="mt-2">Field modules available on-site for workers and supervisors</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="bg-gray-200 p-2 rounded-full mr-4">
+                                    <i class="fas fa-chart-line text-gray-800"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">kMonitor</h4>
+                                    <p class="text-gray-600">Monitoring and tracking work progress and projects</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-gray-200 p-2 rounded-full mr-4">
+                                    <i class="fas fa-users text-gray-800"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">kUnit</h4>
+                                    <p class="text-gray-600">Organization of work teams and task assignments</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-gray-200 p-2 rounded-full mr-4">
+                                    <i class="fas fa-user-check text-gray-800"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-lg">kTimeTrack</h4>
+                                    <p class="text-gray-600">Worker attendance, punctuality, and availability</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Built for Construction Realities</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Features designed specifically for construction environments</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-800 rounded-xl p-6 text-center">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Mobile & Offline Access</h3>
+                    <p class="text-gray-300">Access critical information even without internet connectivity on site</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 text-center">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Real-time Sync</h3>
+                    <p class="text-gray-300">Field data instantly updates office dashboards when connection is restored</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 text-center">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Task Management</h3>
+                    <p class="text-gray-300">Assign, track, and complete tasks with team accountability</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-6 text-center">
+                    <div class="text-yellow-500 text-4xl mb-4">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Analytics & Reporting</h3>
+                    <p class="text-gray-300">Powerful insights into productivity, costs, and project progress</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-yellow-500 to-yellow-600">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Ready to Transform Your Construction Operations?</h2>
+            <p class="text-gray-900 text-xl max-w-2xl mx-auto mb-10">Join thousands of construction professionals using Kômandy to streamline their workflows and improve productivity.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <button class="bg-gray-900 hover:bg-gray-800 text-white font-bold px-8 py-4 rounded-lg shadow-lg transition duration-300">
+                    Request a Demo
+                </button>
+                <button class="bg-white hover:bg-gray-100 text-gray-900 font-bold px-8 py-4 rounded-lg shadow-lg transition duration-300">
+                    Contact Sales
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <div class="text-2xl font-bold mb-4">Kômandy</div>
+                    <p class="text-gray-400 mb-4">Building the future of construction management through innovative digital solutions.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">kFleet</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">kPower</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">kBuildyard</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">kZoky</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">kTimeTrack</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Modules</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">kLogistics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">- kInventory</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">- kDeploy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">- kProcurement</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">kOperations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">- kMonitor</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-500">- kUnit</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-500"></i>
+                            <span>Lot 88 Ter AII Antehiroka Ambohijanahary Antananarivo, Madagascar</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone mt-1 mr-3 text-yellow-500"></i>
+                            <span>+265 34 13 782 71</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-yellow-500"></i>
+                            <span>atova_agency@proton.me</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2025 Atova Software Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple animation for cards on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.card-hover').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
