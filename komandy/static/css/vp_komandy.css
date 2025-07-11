@@ -105,6 +105,56 @@
       padding: 0 1rem;
     }
 
+
+#TOC:before {
+  padding-top: 0.5rem;
+  content: url("https://lerina.github.io/logo_lerina_96x96.png");
+  margin-left: 3rem; /*gap between page left border and logo */
+}
+#TOC a { text-decoration: none; }
+
+#title-block-header {
+    background-image: url("https://lerina.github.io/img/binary_banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    color:#fff;
+    width: 100%;
+    max-width: 100%;
+    padding: 3rem 0 2rem 0;
+}
+
+.author { display: none;}
+.subtitle { 
+    /*background-color: rgba(31,31,31,0.9);*/
+    font-weight:bold; 
+}
+
+/*
+
++ I'm visible: show hidden on hover 
+: Hide me.
+: Hide me too.
+
+*/
+dl {
+	padding: 0px;
+	margin: 0px;
+}
+
+dd {
+  	font-size: small;
+}
+
+dl dd:last-of-type {
+	display: none;
+}
+
+dl:hover dd:last-of-type {
+	display: block;
+}
+
     /* Typography */
     h1, h2, h3, h4, h5, h6 {
       color: var(--color-text);
