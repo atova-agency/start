@@ -75,38 +75,36 @@
       }
     }
 
-    body {
-      background: transparent;
-      color: var(--color-text);
-      font-family: var(--font-family);
-      line-height: var(--line-height);
-      margin: 0;
-      overflow-x: hidden;
-      padding: 0;
-      min-height: 100vh;
-    }
-
-    /* Layout */
-    footer,
-    header,
-    main {
-      margin: 0 auto;
-      max-width: var(--width-content);
-      padding: 3rem 1rem;
-    }
-
-    section {
-      padding: 4rem 1rem;
-    }
-
-    .container {
-      max-width: var(--width-content);
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-
 /* TOC & dropdownmenu */
+/* Headers */
+article header,
+div header,
+main header {
+    padding-top: 0;
+}
+
+
+header {
+    text-align: var(--justify-important);
+}
+
+header a b,
+header a em,
+header a i,
+header a strong {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+header nav img {
+    margin: 1rem 0;
+}
+
+section header {
+    padding-top: 0;
+    width: 100%;
+}
+
 /* Nav */
 nav {
     align-items: center;
@@ -172,7 +170,7 @@ nav ul li ul li a {
   content: url("https://lerina.github.io/logo_lerina_96x96.png");
   margin-left: 3rem; /*gap between page left border and logo */
 }
-#TOC a { text-decoration: none; }
+#TOC a { text-decoration: none; color: var(--color-accent);}
 
 #title-block-header {
     background-image: url("https://lerina.github.io/img/binary_banner.png");
@@ -191,6 +189,135 @@ nav ul li ul li a {
     /*background-color: rgba(31,31,31,0.9);*/
     font-weight:bold; 
 }
+
+    /* Layout */
+article aside {
+    background: var(--color-secondary-accent);
+    border-left: 4px solid var(--color-secondary);
+    padding: 0.01rem 0.8rem;
+}
+
+
+/*
+body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-family);
+    line-height: var(--line-height);
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0;
+}
+*/
+    body {
+      background: transparent;
+      color: var(--color-text);
+      font-family: var(--font-family);
+      line-height: var(--line-height);
+      margin: 0;
+      overflow-x: hidden;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+
+footer,
+header,
+main {
+    margin: 0 auto;
+    max-width: var(--width-content);
+    padding: 2rem 1rem 2rem 1rem;
+}
+
+hr {
+    background-color: var(--color-bg-secondary);
+    border: none;
+    height: 1px;
+    margin: 4rem 0;
+    width: 100%;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: var(--justify-important);
+}
+
+section img,
+article img {
+    max-width: 100%;
+}
+
+section pre {
+    overflow: auto;
+}
+
+section aside {
+    border: 1px solid var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow) var(--color-shadow);
+    margin: 1rem;
+    padding: 1.25rem;
+    width: var(--width-card);
+}
+
+section aside:hover {
+    box-shadow: var(--box-shadow) var(--color-bg-secondary);
+}
+
+[hidden] {
+    display: none;
+}
+
+.collapse {visibility: collapse;}
+
+    .container {
+      max-width: var(--width-content);
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+/* tw */
+
+    .btn-primary {
+      background: linear-gradient(145deg, #05225003, #57534e);
+      transition: all 0.2s ease;
+      border: 1px solid var(--color-accent);
+    }
+    
+    .btn-primary:hover {
+      background-color: #343434;
+      transform: translateY(-2px);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--color-accent);
+      transition: all 0.2s ease;
+    }
+    
+    .btn-outline:hover {
+      background-color: rgba(179, 147, 123, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .stats-card {
+      background: linear-gradient(145deg, #b42930, #502205);
+      border: 1px solid var(--color-accent);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 1.25rem;
+    }
+    
+    .troubleshooting-item {
+      transition: all 0.3s ease;
+    }
+    
+    .troubleshooting-item:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      transform: translateX(5px);
 
 /*
 
