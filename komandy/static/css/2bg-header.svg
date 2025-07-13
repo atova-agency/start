@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    viewBox="0 0 1200 400"
-   style="background:linear-gradient(135deg, #1A1A1A, #0D0D0D)"
+   style="background:linear-gradient(to bottom right, #636363, #363636)"
    version="1.1"
    id="svg33"
-   sodipodi:docname="deepseek_svg_20250713_b05e66.svg"
+   sodipodi:docname="bg-headerr.svg"
    inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -21,7 +21,7 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="1.47"
-     inkscape:cx="600.34014"
+     inkscape:cx="525.5102"
      inkscape:cy="200"
      inkscape:window-width="1920"
      inkscape:window-height="1021"
@@ -33,47 +33,30 @@
      id="defs3">
     <pattern
        inkscape:collect="always"
-       xlink:href="#Cubes"
-       preserveAspectRatio="none"
-       id="pattern33"
-       patternTransform="scale(0.4)" />
+       xlink:href="#Alternating Chevron"
+       id="pattern38"
+       patternTransform="scale(0.3)" />
     <pattern
        patternUnits="userSpaceOnUse"
-       width="142"
-       height="123"
-       patternTransform="scale(0.4)"
-       id="Cubes"
-       preserveAspectRatio="none"
-       style="fill:#000000"
-       x="0"
-       y="0"
-       inkscape:label="Cubes"
+       width="100"
+       height="100"
+       id="Alternating Chevron"
+       patternTransform="scale(0.3,0.3)"
        inkscape:collect="always"
+       style="fill:#000000"
+       inkscape:label="Alternating chevron"
        inkscape:isstock="true">
-      <path
-         id="path14"
-         style="fill-opacity:0.6;stroke-width:2;stroke-miterlimit:10"
-         d="M 0.00195313,0.001953 V 0.0039061 L 35.509766,20.503906 71.009766,0.0078124 106.50977,20.503906 142,0.0136718 V 0.001953 Z" />
-      <path
-         id="path16"
-         style="fill-opacity:0.3;stroke-width:2;stroke-miterlimit:10"
-         d="m 35.503902,61.5 0.0039,0.002 v 41 L 0,123.00195 V 81.998047 Z M 142.01171,0 l 0.004,0.002 v 41 l -35.5079,20.499953 V 20.498047 Z m -71.000002,0 0.0039,0.002 v 41 L 35.507806,61.501953 V 20.498047 Z m 35.492192,61.5 0.004,0.002 v 41 L 71,123.00195 V 81.998047 Z" />
-      <path
-         id="path18"
-         style="fill-opacity:1;stroke-width:2;stroke-miterlimit:10"
-         d="m 106.49609,61.5 -0.004,0.002 v 41 L 142,123.00195 V 81.998047 Z M 71.0039,0 71,0.002 v 41 l 35.50781,20.499953 V 20.498047 Z m -71,0 L 0,0.002 v 41 L 35.507806,61.501953 V 20.498047 Z m 35.492194,61.5 -0.0039,0.002 v 41 L 71,123.00195 V 81.998047 Z" />
-      <path
-         id="path20"
-         style="fill-opacity:0.6;stroke-width:2;stroke-miterlimit:10"
-         d="m 70.998047,41.001953 -35.5,20.496094 L 0,41.003906 v 40.998047 l 0.00195313,0.002 35.49999987,-20.496094 35.5,20.496094 L 106.50195,61.507812 142,82.001953 V 41.003906 l -0.002,-0.002 -35.5,20.496094 z" />
-      <path
-         id="path26"
-         style="fill-opacity:0.6;stroke-width:2;stroke-miterlimit:10"
-         d="M 35.505859,102.50195 0.00195313,123 v 0.002 H 142 v -0.008 l -35.49414,-20.49219 -35.500001,20.49609 z" />
+      <g
+         id="g42406">
+        <path
+           id="path42401"
+           style="fill-opacity:1;stroke:none;stroke-width:1;stroke-dasharray:none"
+           d="M 100,100 V 50 L 50,100 Z M 50,0 V 50 L 100,0 Z M 0,0 50,50 v 50 L 0,50 Z" />
+      </g>
     </pattern>
-    <!-- Pattern -->
+    <!-- Stone Pattern -->
     <pattern
-       id="texture"
+       id="stone"
        width="40"
        height="40"
        patternUnits="userSpaceOnUse">
@@ -85,46 +68,47 @@
       <circle
          cx="10"
          cy="10"
-         r="2"
-         fill="#b3937b"
-         opacity="0.7"
+         r="3"
+         fill="#636363"
+         opacity="0.6"
          id="circle1" />
       <circle
          cx="30"
          cy="20"
-         r="3"
-         fill="#b3937b"
-         opacity="0.7"
+         r="4"
+         fill="#636363"
+         opacity="0.6"
          id="circle2" />
       <circle
          cx="25"
          cy="35"
-         r="1.5"
-         fill="#b3937b"
-         opacity="0.7"
+         r="2"
+         fill="#636363"
+         opacity="0.6"
          id="circle3" />
     </pattern>
   </defs>
   <!-- Baobab Silhouettes -->
   <g
-     fill="#b3937b"
-     id="g5">
-    <!-- Light brown -->
+     fill="#a0aec0"
+     id="g5"
+     transform="matrix(1,0,0,0.44897959,0,192.85714)">
+    <!-- Light slate gray -->
     <path
-       d="M150 350 l-30 -200 l60 0 l-30 200z"
+       d="M 150,350 120,150 h 60 z"
        id="path3" />
     <path
-       d="M250 320 l-20 -150 l40 0 l-20 150z"
+       d="M 250,320 230,170 h 40 z"
        id="path4" />
     <path
-       d="M1050 340 l-25 -180 l50 0 l-25 180z"
+       d="m 1050,340 -25,-180 h 50 z"
        id="path5" />
   </g>
   <!-- Antananarivo Skyline -->
   <g
-     fill="#363636"
+     fill="#cbd5e1"
      id="g9">
-    <!-- Dark gray -->
+    <!-- Light gray -->
     <rect
        x="400"
        y="250"
@@ -142,9 +126,9 @@
        y="220"
        width="35"
        height="130"
-       fill="#2a2a2a"
+       fill="#a0aec0"
        id="rect7" />
-    <!-- Slightly darker gray -->
+    <!-- Medium gray -->
     <rect
        x="570"
        y="180"
@@ -156,57 +140,66 @@
        y="230"
        width="45"
        height="120"
-       fill="#2a2a2a"
+       fill="#a0aec0"
        id="rect9" />
   </g>
-  <!-- Light Stick Figure Developers -->
+  <!-- Dark Stick Figure Developers -->
   <g
-     transform="translate(500 200)"
-     stroke="#FFFFFF"
+     transform="rotate(-0.00138915,6104555.2,-19720073)"
+     stroke="#363636"
      stroke-width="2"
-     id="g18">
+     id="g18"
+     style="fill:#e3e2db"
+     inkscape:transform-center-x="-4.2039099"
+     inkscape:transform-center-y="20.004409">
     <!-- Developer 1 -->
     <circle
        cx="0"
        cy="-20"
        r="8"
        fill="none"
-       id="circle9" />
+       id="circle9"
+       style="fill:#e3e2db" />
     <!-- Head -->
     <line
        x1="0"
        y1="-12"
        x2="0"
        y2="20"
-       id="line9" />
+       id="line9"
+       style="fill:#e3e2db" />
     <!-- Body -->
     <line
        x1="0"
        y1="0"
        x2="-15"
        y2="10"
-       id="line10" />
+       id="line10"
+       style="fill:#e3e2db" />
     <!-- Left arm -->
     <line
        x1="0"
        y1="0"
        x2="15"
        y2="10"
-       id="line11" />
+       id="line11"
+       style="fill:#e3e2db" />
     <!-- Right arm -->
     <line
        x1="0"
        y1="20"
        x2="-10"
        y2="40"
-       id="line12" />
+       id="line12"
+       style="fill:#e3e2db" />
     <!-- Left leg -->
     <line
        x1="0"
        y1="20"
        x2="10"
        y2="40"
-       id="line13" />
+       id="line13"
+       style="fill:#e3e2db" />
     <!-- Right leg -->
     <!-- Developer 2 -->
     <circle
@@ -214,37 +207,43 @@
        cy="-20"
        r="8"
        fill="none"
-       id="circle13" />
+       id="circle13"
+       style="fill:#e3e2db" />
     <line
        x1="50"
        y1="-12"
        x2="50"
        y2="20"
-       id="line14" />
+       id="line14"
+       style="fill:#e3e2db" />
     <line
        x1="50"
        y1="5"
        x2="35"
        y2="0"
-       id="line15" />
+       id="line15"
+       style="fill:#e3e2db" />
     <line
        x1="50"
        y1="5"
        x2="65"
        y2="0"
-       id="line16" />
+       id="line16"
+       style="fill:#e3e2db" />
     <line
        x1="50"
        y1="20"
        x2="40"
        y2="40"
-       id="line17" />
+       id="line17"
+       style="fill:#e3e2db" />
     <line
        x1="50"
        y1="20"
        x2="60"
        y2="40"
-       id="line18" />
+       id="line18"
+       style="fill:#e3e2db" />
   </g>
   <!-- Mobile Device -->
   <g
@@ -257,7 +256,7 @@
        width="120"
        height="220"
        rx="15"
-       fill="#b3937b"
+       fill="#a0aec0"
        id="rect18" />
     <rect
        x="10"
@@ -265,7 +264,7 @@
        width="100"
        height="200"
        rx="10"
-       fill="#363636"
+       fill="#f1f5f9"
        id="rect19" />
     <!-- App Interface -->
     <rect
@@ -273,21 +272,21 @@
        y="30"
        width="70"
        height="20"
-       fill="#5a5a5a"
+       fill="#cbd5e1"
        rx="5"
        id="rect20" />
     <circle
        cx="60"
        cy="90"
        r="20"
-       fill="#7a7a7a"
+       fill="#e2e8f0"
        id="circle20" />
     <rect
        x="30"
        y="130"
        width="60"
        height="15"
-       fill="#9a9a9a"
+       fill="#f8fafc"
        rx="3"
        id="rect21" />
     <rect
@@ -295,18 +294,18 @@
        y="155"
        width="60"
        height="15"
-       fill="#9a9a9a"
+       fill="#f8fafc"
        rx="3"
        id="rect22" />
     <!-- Hands -->
     <path
        d="M-20 50 Q0 40, 0 80 Q0 120, -20 110"
-       fill="#FFFFFF"
+       fill="#363636"
        opacity="0.6"
        id="path22" />
     <path
        d="M140 50 Q120 40, 120 80 Q120 120, 140 110"
-       fill="#FFFFFF"
+       fill="#363636"
        opacity="0.6"
        id="path23" />
   </g>
@@ -320,7 +319,7 @@
        y="0"
        width="180"
        height="120"
-       fill="#b3937b"
+       fill="#a0aec0"
        rx="5"
        id="rect23" />
     <rect
@@ -328,7 +327,7 @@
        y="10"
        width="160"
        height="100"
-       fill="#363636"
+       fill="#f1f5f9"
        rx="3"
        id="rect24" />
     <!-- Rust Code Display -->
@@ -337,7 +336,7 @@
        y="30"
        font-family="monospace"
        font-size="10"
-       fill="#FFFFFF"
+       fill="#1e293b"
        id="text28"><tspan
          x="20"
          dy="1.2em"
@@ -360,16 +359,17 @@
        y="120"
        width="220"
        height="20"
-       fill="#b3937b"
+       fill="#a0aec0"
        rx="3"
        id="rect28" />
   </g>
   <!-- Lemur Tech Symbol -->
   <g
      transform="translate(900 100)"
-     stroke="#FFFFFF"
+     stroke="#363636"
      stroke-width="2"
-     id="g33">
+     id="g33"
+     style="fill:#dee3db">
     <!-- Wi-Fi Waves -->
     <circle
        cx="60"
@@ -377,48 +377,54 @@
        r="25"
        fill="none"
        stroke-dasharray="4 4"
-       id="circle28" />
+       id="circle28"
+       style="fill:#dee3db" />
     <circle
        cx="60"
        cy="60"
        r="15"
        fill="none"
        stroke-dasharray="4 4"
-       id="circle29" />
+       id="circle29"
+       style="fill:#dee3db" />
     <circle
        cx="60"
        cy="60"
        r="5"
-       fill="#FFFFFF"
-       id="circle30" />
+       fill="#363636"
+       id="circle30"
+       style="fill:#dee3db" />
     <!-- Lemur Head -->
     <circle
        cx="60"
        cy="40"
        r="15"
        fill="none"
-       id="circle31" />
+       id="circle31"
+       style="fill:#dee3db" />
     <circle
        cx="55"
        cy="38"
        r="2"
-       fill="#363636"
-       id="circle32" />
+       fill="#1e293b"
+       id="circle32"
+       style="fill:#dee3db" />
     <circle
        cx="65"
        cy="38"
        r="2"
-       fill="#363636"
-       id="circle33" />
+       fill="#1e293b"
+       id="circle33"
+       style="fill:#dee3db" />
   </g>
-  <!-- Pattern Border -->
+  <!-- Stone Pattern Border -->
   <rect
      x="0"
      y="380"
      width="1200"
      height="20"
-     fill="url(#texture)"
+     fill="url(#stone)"
      id="rect33"
-     style="fill:url(#pattern33);fill-opacity:1;opacity:0.59" />
+     style="fill:url(#pattern38);fill-opacity:1;opacity:0.33" />
   <!-- Title Text -->
 </svg>
