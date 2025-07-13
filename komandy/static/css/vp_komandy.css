@@ -40,6 +40,37 @@
       }
     }
 
+/* Enhanced Syntax Highlighting for Dark Theme */
+code span.al { color: #ff6b6b !important; font-weight: bold !important; } /* Brighter red */
+code span.an { color: #4db5bd !important; } /* Cyan */
+code span.at { color: #9ccc65 !important; } /* Light green */
+code span.bn { color: #bd93f9 !important; } /* Purple */
+code span.bu { color: #8be9fd !important; } /* Light blue */
+code span.cf { color: #ff79c6 !important; font-weight: bold !important; } /* Pink */
+code span.ch { color: #f1fa8c !important; } /* Yellow */
+code span.cn { color: #bd93f9 !important; } /* Purple */
+code span.co { color: #a9b7c6 !important; font-style: italic !important; } /* Light gray */
+code span.cv { color: #a9b7c6 !important; font-weight: bold !important; font-style: italic !important; } /* Light gray */
+code span.do { color: #ffb86c !important; } /* Orange */
+code span.dt { color: #ff79c6 !important; } /* Pink */
+code span.dv { color: #bd93f9 !important; } /* Purple */
+code span.er { color: #ff5555 !important; font-weight: bold !important; } /* Bright red */
+code span.ex { color: #50fa7b !important; } /* Green */
+code span.fl { color: #bd93f9 !important; } /* Purple */
+code span.fu { color: #50fa7b !important; } /* Green */
+code span.im { color: #ffb86c !important; font-weight: bold !important; } /* Orange */
+code span.in { color: #a9b7c6 !important; font-weight: bold !important; font-style: italic !important; } /* Light gray */
+code span.kw { color: #ff79c6 !important; font-weight: bold !important; } /* Pink */
+code span.op { color: #f8f8f2 !important; } /* White */
+code span.ot { color: #f0fa7b !important; } /* Green */
+code span.pp { color: #ffb86c !important; } /* Orange */
+code span.sc { color: #f1fa8c !important; } /* Yellow */
+code span.ss { color: #f1fa8c !important; } /* Yellow */
+code span.st { color: #f1fa8c !important; } /* Yellow */
+code span.va { color: #f8f8f2 !important; } /* White */
+code span.vs { color: #f1fa8c !important; } /* Yellow */
+code span.wa { color: #ffb86c !important; font-weight: bold !important; font-style: italic !important; } /* Orange */
+
     /* Base Styles */
     * {
       box-sizing: border-box;
@@ -741,3 +772,132 @@ dl:hover dd:last-of-type {
         align-items: center;
       }
     }
+
+/* PRE CODE */
+
+/* PRE CODE - DARK MODE ENHANCEMENTS */
+/* Enhanced for Dark Theme */
+pre {
+  background-color: #1e1e1e; /* Dark gray instead of pure black */
+  border: 1px solid #444; /* Add subtle border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 1rem; /* Better spacing */
+  overflow: auto; /* Ensure scrolling */
+  margin: 1.5rem 0; /* Consistent spacing */
+}
+
+code {
+  white-space: pre-wrap;
+  background-color: #2d2d2d; /* Dark background */
+  color: #e0e0e0; /* Light text color */
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+span.smallcaps { font-variant: small-caps; }
+
+div.columns {
+  display: flex;
+  gap: min(4vw, 1.5em);
+}
+
+div.column {
+  flex: auto;
+  overflow-x: auto;
+}
+
+div.hanging-indent {
+  margin-left: 1.5em;
+  text-indent: -1.5em;
+}
+
+ul.task-list[class] {
+  list-style: none;
+}
+
+ul.task-list li input[type="checkbox"] {
+  font-size: inherit;
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+
+.display.math {
+  display: block;
+  text-align: center;
+  margin: 0.5rem auto;
+}
+
+/* Syntax Highlighting Container */
+pre > code.sourceCode {
+  white-space: pre;
+  position: relative;
+  background: transparent !important; /* Remove inner background */
+}
+
+pre > code.sourceCode > span {
+  line-height: 1.5; /* Better line spacing */
+}
+
+pre > code.sourceCode > span:empty {
+  height: 1.2em;
+}
+
+.sourceCode { overflow: visible; }
+
+code.sourceCode > span {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+div.sourceCode { margin: 1em 0; }
+
+pre.sourceCode { margin: 0; }
+
+@media screen {
+  div.sourceCode { overflow: auto; }
+}
+
+@media print {
+  pre > code.sourceCode { white-space: pre-wrap; }
+  pre > code.sourceCode > span {
+    text-indent: -5em;
+    padding-left: 5em;
+  }
+}
+
+pre.numberSource code {
+  counter-reset: source-line 0;
+}
+
+pre.numberSource code > span {
+  position: relative;
+  left: -4em;
+  counter-increment: source-line;
+}
+
+pre.numberSource code > span > a:first-child::before {
+  content: counter(source-line);
+  position: relative;
+  left: -1em;
+  text-align: right;
+  vertical-align: baseline;
+  border: none;
+  display: inline-block;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0 4px;
+  width: 4em;
+  color: #7d7d7d; /* Brighter line numbers */
+}
+
+pre.numberSource {
+  margin-left: 3em;
+  border-left: 1px solid #444; /* Visible border */
+  padding-left: 4px;
+}
+
