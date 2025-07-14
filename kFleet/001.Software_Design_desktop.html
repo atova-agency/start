@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" color-mode="" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Software Design: Web/Desktop</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://atova-agency.github.io/start/komandy/static/css/vp_komandy.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Software Design: Web/Desktop</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#software-design-webdesktop"
+id="toc-software-design-webdesktop">Software Design: Web/Desktop</a>
+<ul>
+<li><a href="#software-design---kfleet-management-system"
+id="toc-software-design---kfleet-management-system"><strong>Software
+Design - kFleet Management System</strong></a></li>
+<li><a href="#diagramme-darchitecture"
+id="toc-diagramme-darchitecture"><strong>2. Diagramme
+d’Architecture</strong></a></li>
+<li><a href="#services-principaux"
+id="toc-services-principaux"><strong>3. Services
+Principaux</strong></a></li>
+<li><a href="#modèle-de-données-clé"
+id="toc-modèle-de-données-clé"><strong>4. Modèle de Données
+Clé</strong></a></li>
+<li><a href="#intégrations-critiques"
+id="toc-intégrations-critiques"><strong>5. Intégrations
+Critiques</strong></a></li>
+<li><a href="#stratégie-de-fiabilité"
+id="toc-stratégie-de-fiabilité"><strong>6. Stratégie de
+Fiabilité</strong></a></li>
+<li><a href="#design-duiux" id="toc-design-duiux"><strong>7. Design
+d’UI/UX</strong></a></li>
+<li><a href="#évolutivité-prévisionnelle"
+id="toc-évolutivité-prévisionnelle"><strong>8. Évolutivité
+Prévisionnelle</strong></a></li>
+<li><a href="#architecture-générale"
+id="toc-architecture-générale">Architecture Générale</a></li>
+<li><a href="#diagramme-des-composants-clés"
+id="toc-diagramme-des-composants-clés">Diagramme des Composants
+Clés</a></li>
+<li><a href="#description-des-services-principaux"
+id="toc-description-des-services-principaux">Description des Services
+Principaux</a></li>
+<li><a href="#flux-data-critique" id="toc-flux-data-critique">Flux Data
+Critique</a></li>
+<li><a href="#décisions-clés" id="toc-décisions-clés">Décisions
+Clés</a></li>
+<li><a href="#schéma-de-base-de-données-core"
+id="toc-schéma-de-base-de-données-core">Schéma de Base de Données
+(Core)</a></li>
+<li><a href="#évolutivité" id="toc-évolutivité">Évolutivité</a></li>
+</ul></li>
+</ul>
+</nav>
+<main>
+<div class="focus">
+<h3>
+Voir aussi
+</h3>
+<div class="desc">
+<ul>
+<li>[Analyse &amp; Recommandations(./index.html)</li>
+<li>Software_Design_desktop</li>
+<li><a
+href="002.Software_Design_mobile.html">Software_Design_mobile</a></li>
+<li><a href="003.Sprint.html">Sprint</a></li>
+</ul>
+<p>This one is for us only. - <a
+href="004.Plan%20Financier%202025.html">Plan Financier 2025</a></p>
+</div>
+</div>
+<hr />
+<h1 id="software-design-webdesktop">Software Design: Web/Desktop</h1>
+<h2 id="software-design---kfleet-management-system"><strong>Software
+Design - kFleet Management System</strong></h2>
+<p><strong>Architecture Orientée Services pour une Flotte
+BTP</strong></p>
+<hr />
+<h3 id="architecture-globale"><strong>1. Architecture
+Globale</strong></h3>
+<p><strong>Style</strong> : Microservices + Événements<br />
+<strong>Patterns Clés</strong> : CQRS, Event Sourcing (pour les données
+critiques)<br />
+<strong>Stack</strong> :</p>
+<ul>
+<li><strong>Backend</strong> : Rust (Axum) + PostgreSQL<br />
+</li>
+<li><strong>Frontend</strong> : React PWA (Progressive Web App)<br />
+</li>
+<li><strong>Mobile</strong> : React Native<br />
+</li>
+<li><strong>Bus Événements</strong> : Redis Streams / Apache Kafka /
+RedPanda</li>
+</ul>
+<hr />
+<h2 id="diagramme-darchitecture"><strong>2. Diagramme
+d’Architecture</strong></h2>
+<pre><code>┌─────────────────┐       ┌───────────────────────┐       ┌──────────────────┐  
+│                 │       │                       │       │                  │  
+│  Frontend       ├───────►   API Gateway         ├───────►  Auth Service    │  
+│  (React PWA)    │       │  (Rate Limiting,      │       │  (JWT/OAuth2)    │  
+│                 │       │   Routing)            │       │                  │  
+└─────────────────┘       └──────────┬────────────┘       └──────────────────┘  
+                                     │  
+                                     ▼  
+┌───────────────────────────────────────────────────────────────────┐  
+│                                                                  │  
+│                 Microservices Core (Rust Axum)                   │  
+│                                                                  │  
+│  ┌────────────┐  ┌─────────────┐  ┌─────────────┐  ┌───────────┐ │  
+│  │            │  │             │  │             │  │           │ │  
+│  │ Asset      │  │ Contract    │  │ Planning    │  │ Reporting │ │  
+│  │ Service    │  │ Service     │  │ Service     │  │ Service   │ │  
+│  │            │  │             │  │             │  │           │ │  
+│  └─────┬──────┘  └──────┬──────┘  └──────┬──────┘  └─────┬─────┘ │  
+│        │                │                │               │       │  
+└───────────────────────────────────────────────────────────────────┘  
+        │                │                │               │  
+        ▼                ▼                ▼               ▼  
+┌────────────────────┐ ┌────────────────────┐ ┌─────────────────────┐  
+│   Asset Database   │ │ Contract Database  │ │ Reporting Database  │  
+│ (PostgreSQL - OLTP)│ │ (PostgreSQL - OLTP)│ │ (TimescaleDB - OLAP)│  
+└────────────────────┘ └────────────────────┘ └─────────────────────┘  
+        ▲                ▲                ▲               ▲  
+        │                │                │               │  
+┌───────┴──────┐ ┌───────┴───────┐ ┌──────┴──────┐ ┌──────┴───────┐  
+│ IoT Ingestion│ │ Docuware Sync │ │ Odoo Sync   │ │ Data Warehouse│  
+│ (GPS Devices)│ │ (Documents)   │ │ (Contracts) │ │ (Columnar DB)│  
+└──────────────┘ └───────────────┘ └─────────────┘ └──────────────┘  </code></pre>
+<hr />
+<h2 id="services-principaux"><strong>3. Services
+Principaux</strong></h2>
+<h3 id="a-asset-service"><strong>a) Asset Service</strong></h3>
+<p><strong>Responsabilités</strong> :</p>
+<ul>
+<li>Gestion du cycle de vie des machines<br />
+</li>
+<li>Tracking temps réel (statut ON/OFF/maintenance)<br />
+</li>
+<li>Gestion des documents techniques (assurances, contrôles)</li>
+</ul>
+<p><strong>API Clés</strong> :</p>
+<ul>
+<li><code>POST /assets</code> : Ajouter une machine<br />
+</li>
+<li><code>GET /assets/{id}/status</code> : Statut temps réel<br />
+</li>
+<li><code>PUT /assets/{id}/documents</code> : Mettre à jour
+documents</li>
+</ul>
+<h3 id="b-contract-service"><strong>b) Contract Service</strong></h3>
+<p><strong>Workflow Automatisé</strong> :</p>
+<ol type="1">
+<li>Génération devis → 2. Signature électronique → 3. Facturation</li>
+</ol>
+<p><strong>Intégrations</strong> :</p>
+<ul>
+<li>Webhooks Docuware (statuts signatures)<br />
+</li>
+<li>Sync bidirectionnelle avec Odoo</li>
+</ul>
+<h3 id="c-planning-service"><strong>c) Planning Service</strong></h3>
+<p><strong>Fonctionnalités</strong> :</p>
+<ul>
+<li>Réservation self-service des véhicules<br />
+</li>
+<li>Algorithmes d’optimisation :</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fn</span> optimize_assignement(vehicles<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span>Vehicle<span class="op">&gt;,</span> drivers<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span>Driver<span class="op">&gt;</span>) <span class="op">-&gt;</span> HashMap<span class="op">&lt;</span>Vehicle<span class="op">,</span> Driver<span class="op">&gt;</span> <span class="op">{</span>  </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Logique métier pour matching compétences  </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>  </span></code></pre></div>
+<ul>
+<li>Conflits détectés via événements</li>
+</ul>
+<h3 id="d-reporting-service"><strong>d) Reporting Service</strong></h3>
+<p><strong>Data Flow</strong> :</p>
+<ol type="1">
+<li>Collecte événements → 2. Agrégation TimescaleDB → 3. Génération
+PDF/Excel</li>
+</ol>
+<p><strong>KPI Principaux</strong> :</p>
+<ul>
+<li>Taux d’utilisation machines<br />
+</li>
+<li>Coût moyen par heure/machine</li>
+</ul>
+<hr />
+<h2 id="modèle-de-données-clé"><strong>4. Modèle de Données
+Clé</strong></h2>
+<h3 id="entité-machine"><strong>Entité Machine</strong></h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Machine <span class="op">{</span>  </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    id<span class="op">:</span> Uuid<span class="op">,</span>  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    status<span class="op">:</span> MachineStatus<span class="op">,</span> <span class="co">// Enum: Active, Maintenance, Available  </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    gps_coords<span class="op">:</span> (<span class="dt">f64</span><span class="op">,</span> <span class="dt">f64</span>)<span class="op">,</span>  </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    technical_specs<span class="op">:</span> Json<span class="op">,</span>  </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    documents<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span>DocumentMetadata<span class="op">&gt;,</span>  </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    current_contract_id<span class="op">:</span> <span class="dt">Option</span><span class="op">&lt;</span>Uuid<span class="op">&gt;</span>  </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>  </span></code></pre></div>
+<h3 id="événement-contractuel"><strong>Événement
+Contractuel</strong></h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> ContractSignedEvent <span class="op">{</span>  </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    contract_id<span class="op">:</span> Uuid<span class="op">,</span>  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    machine_id<span class="op">:</span> Uuid<span class="op">,</span>  </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    client_id<span class="op">:</span> Uuid<span class="op">,</span>  </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    sign_date<span class="op">:</span> DateTime<span class="op">&lt;</span>Utc<span class="op">&gt;,</span>  </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    pdf_url<span class="op">:</span> <span class="dt">String</span>  </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>  </span></code></pre></div>
+<hr />
+<h2 id="intégrations-critiques"><strong>5. Intégrations
+Critiques</strong></h2>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 21%" />
+<col style="width: 26%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Système</strong></th>
+<th><strong>Protocole</strong></th>
+<th><strong>Fréquence</strong></th>
+<th><strong>Responsable</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GPS Trackers</td>
+<td>MQTT</td>
+<td>Temps réel</td>
+<td>Asset Service</td>
+</tr>
+<tr class="even">
+<td>Docuware</td>
+<td>REST Webhooks</td>
+<td>Événementiel</td>
+<td>Contract Service</td>
+</tr>
+<tr class="odd">
+<td>Odoo</td>
+<td>GraphQL</td>
+<td>Toutes les 15 min</td>
+<td>Contract Service</td>
+</tr>
+<tr class="even">
+<td>ERP Interne</td>
+<td>SFTP</td>
+<td>Quotidien</td>
+<td>Reporting Service</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="stratégie-de-fiabilité"><strong>6. Stratégie de
+Fiabilité</strong></h2>
+<p><strong>a) Désynchronisation Contrôlée</strong> :</p>
+<ul>
+<li>Pattern Saga pour transactions distribuées (ex: réservation machine
+→ contrat)</li>
+</ul>
+<p><strong>b) Monitoring</strong> :</p>
+<ul>
+<li>Dashboard Prometheus/Grafana :
+<ul>
+<li>Latence des microservices<br />
+</li>
+<li>Taux d’erreurs intégrations<br />
+</li>
+</ul></li>
+<li>Alertes Slack sur :
+<ul>
+<li>Disponibilité &lt; 99%<br />
+</li>
+<li>Sync Odoo &gt; 1h retard</li>
+</ul></li>
+</ul>
+<p><strong>c) Disaster Recovery</strong> :<br />
+- Réplication multi-AZ (AWS)<br />
+- Backups automatisés :<br />
+- Bases OLTP : RPO 15 min<br />
+- Data warehouse : RPO 24h</p>
+<hr />
+<h2 id="design-duiux"><strong>7. Design d’UI/UX</strong></h2>
+<p><strong>Principe Fondamental</strong> : Mobile-first pour terrain
+BTP</p>
+<p><strong>Vues Clés</strong> :</p>
+<ol type="1">
+<li><strong>Carte Interactive</strong> :
+<ul>
+<li>Clusters de machines par statut<br />
+</li>
+<li>Filtres dynamiques (type, disponibilité)</li>
+</ul></li>
+<li><strong>Fiche Machine</strong> :</li>
+</ol>
+<pre><code>[Photo]  
+Statut: ● En location  
+Contrat: #CT-2024-587 (PO Rakoto)  
+Documents:  
+- Assurance (expire 15/12/2024) [!]  
+- Contrôle technique: VALIDE  </code></pre>
+<ol start="3" type="1">
+<li><p><strong>Planning Unifié</strong> :</p>
+<ul>
+<li>Vue jour/semaine/mois<br />
+</li>
+<li>Glisser-déposer des affectations</li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="évolutivité-prévisionnelle"><strong>8. Évolutivité
+Prévisionnelle</strong></h2>
+<p><strong>Scale Horizontale</strong> :</p>
+<ul>
+<li><strong>Jusqu’à 500 machines</strong> : 2 instances Rust<br />
+</li>
+<li><strong>+500 machines</strong> : Ajout de nodes Kubernetes<br />
+</li>
+<li><strong>Pic de requêtes</strong> : Cache Redis (30% gains perf)</li>
+</ul>
+<p><strong>Avantages Rust</strong> :</p>
+<ul>
+<li>1 instance = 10k req/s (vs 2k en Python/Node)<br />
+</li>
+<li>Consommation mémoire ÷ 3 vs JVM</li>
+</ul>
+<hr />
+<p>Ce design optimise :</p>
+<p>✅ <strong>Maintenabilité</strong> : Découpage microservices<br />
+✅ <strong>Performance</strong> : Stack Rust + PostgreSQL<br />
+✅ <strong>Adaptabilité</strong> : Événements pour intégrations
+futures<br />
+✅ <strong>UX Terrain</strong> : PWA fonctionnelle offline</p>
+<p>Les choix techniques permettent une rentabilité accrue grâce aux
+coûts d’infra réduits, crucial pour le marché Malagasy.</p>
+<hr />
+<p>T:</p>
+<p>Nous allons concevoir une architecture logicielle modulaire pour le
+système de gestion kFleet, sans entrer dans les détails
+d’implémentation.</p>
+<p>L’accent est mis sur la structuration des composants et leurs
+interactions.</p>
+<h2 id="architecture-générale">Architecture Générale</h2>
+<p><strong>Style Architectural</strong> : Microservices (bien que
+monolithique modulaire soit possible avec Rust+Axum)<br />
+<strong>Base de Données</strong> : PostgreSQL (avec TimescaleDB pour les
+séries temporelles de tracking)<br />
+<strong>Communication</strong> : REST/GraphQL pour les APIs externes,
+gRPC pour les communications internes entre services</p>
+<h2 id="diagramme-des-composants-clés">Diagramme des Composants
+Clés</h2>
+<pre><code>┌──────────────────────────┐       ┌──────────────────────────┐
+│                          │       │                          │
+│  Frontend (Web/Mobile)   │◄─────►│    API Gateway           │
+│  - React / React Native  │       │    (Auth, Routing)       │
+│                          │       │                          │
+└──────────────────────────┘       └───────────┬──────────────┘                                               ▲
+                                               │                                                              │
+                                               ▼                                                              │
+┌──────────────────────────────────────────────────────────────────────┐                                      │
+│                                                                      │                                      │
+│                         Backend Services                             │                                      │
+│                                                                      │                                      │
+│  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌───────┴──────┐                              │
+│  │           │  │           │  │           │  │           │  │              │                              │
+│  │  Asset    │  │ Contract  │  │  User     │  │ Planning  │  │  Reporting   │                              │
+│  │ Service   │  │ Service   │  │ Service   │  │ Service   │  │  Service     │                              │
+│  │           │  │           │  │           │  │           │  │              │                              │
+│  └─────┬─────┘  └─────┬─────┘  └─────┬─────┘  └─────┬─────┘  └───────▲──────┘                              │
+│        │              │              │              │                │                                      │
+└──────────────────────────────────────────────────────────────────────┘                                      │
+         │              │              │              │                │                                      │
+         ▼              ▼              ▼              ▼                ▼                                      │
+┌────────────────────────────────────────────────────────────┐ ┌───────────────┐                              │
+│                     Core Database                          │ │               │                              │
+│                     (PostgreSQL)                           │ │  Time-Series  │                              │
+│                                                            │ │   Database    │◄─────────────────────────────┘
+│ - Machines, Contracts, Users, etc.                         │ │  (Timescale)  │
+└────────────────────────────────────────────────────────────┘ └───────────────┘
+         ▲              ▲              ▲              ▲                ▲
+         │              │              │              │                │
+┌────────┴─────┐ ┌──────┴──────┐ ┌─────┴──────┐ ┌─────┴──────┐ ┌───────┴───────┐
+│              │ │             │ │            │ │            │ │               │
+│  IoT Ingestion│ │Docuware Int│ │Odoo Int.   │ │ERP/Mainframe│ │Data Warehouse│
+│  (GPS Data)   │ │(Documents) │ │(Contracts) │ │Integration  │ │(for Analytics)│
+│               │ │            │ │            │ │            │ │               │
+└───────────────┘ └────────────┘ └────────────┘ └────────────┘ └───────────────┘</code></pre>
+<h2 id="description-des-services-principaux">Description des Services
+Principaux</h2>
+<h3 id="asset-service">1. <strong>Asset Service</strong></h3>
+<ul>
+<li><strong>Responsabilités</strong> :
+<ul>
+<li>Gestion du catalogue machines (CRUD)</li>
+<li>Suivi état en temps réel (connecté au flux IoT)</li>
+<li>Gestion des documents liés (assurance, contrôles techniques)</li>
+</ul></li>
+<li><strong>Entités Clés</strong> : <code>Machine</code>,
+<code>MachineDocument</code>, <code>MachineStatus</code></li>
+<li><strong>Intégrations</strong> :
+<ul>
+<li>IoT Ingestion (réception des données GPS/état)</li>
+<li>Docuware (stockage documents)</li>
+</ul></li>
+</ul>
+<h3 id="contract-service">2. <strong>Contract Service</strong></h3>
+<ul>
+<li><strong>Responsabilités</strong> :
+<ul>
+<li>Cycle de vie des devis/contrats (brouillon → signé → terminé)</li>
+<li>Génération automatique de contrats basés sur des templates</li>
+<li>Intégration signature électronique</li>
+</ul></li>
+<li><strong>Entités Clés</strong> : <code>Quote</code>,
+<code>Contract</code>, <code>TariffGrid</code></li>
+<li><strong>Intégrations</strong> :
+<ul>
+<li>Odoo (synchro devis NOTE: Client pas sûr. Docuware Only?)</li>
+<li>Docuware (signature/storage)</li>
+</ul></li>
+</ul>
+<h3 id="user-service">3. <strong>User Service</strong></h3>
+<ul>
+<li><strong>Responsabilités</strong> :
+<ul>
+<li>Gestion des utilisateurs (clients, employés, administrateurs)</li>
+<li>Authentification/autorisation (JWT/OAuth2)</li>
+<li>Profils et permissions</li>
+</ul></li>
+<li><strong>Entités Clés</strong> : <code>User</code>,
+<code>Role</code>, <code>Permission</code></li>
+</ul>
+<h3 id="planning-service">4. <strong>Planning Service</strong></h3>
+<ul>
+<li><strong>Responsabilités</strong> :
+<ul>
+<li>Réservation des ressources (machines, opérateurs)</li>
+<li>Optimisation des affectations</li>
+<li>Gestion des conflits</li>
+</ul></li>
+<li><strong>Entités Clés</strong> : <code>Reservation</code>,
+<code>Assignment</code>, <code>ResourceConflict</code></li>
+<li><strong>Algorithmes Clés</strong> :
+<ul>
+<li>Heuristiques d’optimisation (ex: affectation machine/opérateur)</li>
+<li>Détection de conflits en temps réel</li>
+</ul></li>
+</ul>
+<h3 id="reporting-service">5. <strong>Reporting Service</strong></h3>
+<ul>
+<li><strong>Responsabilités</strong> :
+<ul>
+<li>Génération de rapports (PDF/Excel)</li>
+<li>Tableaux de bord personnalisables</li>
+<li>Analytics prédictifs (via ML)</li>
+</ul></li>
+<li><strong>Sources de Données</strong> :
+<ul>
+<li>PostgreSQL (données transactionnelles)</li>
+<li>TimescaleDB (données temporelles)</li>
+<li>Data Warehouse (pour l’historique long)</li>
+</ul></li>
+</ul>
+<h2 id="flux-data-critique">Flux Data Critique</h2>
+<h3 id="flux-1-mise-à-jour-état-machine">Flux 1 : Mise à Jour État
+Machine</h3>
+<ol type="1">
+<li>Capteur IoT → IoT Ingestion (via MQTT/HTTP)</li>
+<li>IoT Ingestion → Asset Service (gRPC)</li>
+<li>Asset Service :
+<ul>
+<li>Met à jour le statut dans PostgreSQL</li>
+<li>Publie un événement “MachineStatusChanged”</li>
+</ul></li>
+<li>Planning Service &amp; Frontend (écoutent l’événement) → mise à jour
+UI</li>
+</ol>
+<h3 id="flux-2-création-de-contrat">Flux 2 : Création de Contrat</h3>
+<ol type="1">
+<li>User Frontend → Contract Service (création devis)</li>
+<li>Contract Service :
+<ul>
+<li>Génère le PDF (template LaTeX/PDFreactor)</li>
+<li>Appel Docuware API pour stockage</li>
+<li>Met à jour Odoo via webhook</li>
+</ul></li>
+<li>Docuware → notifie utilisateur pour signature</li>
+<li>Signature → webhook → Contract Service → marque contrat comme
+signé</li>
+</ol>
+<h2 id="décisions-clés">Décisions Clés</h2>
+<ol type="1">
+<li><strong>Synchronisation des Données</strong> :
+<ul>
+<li>Pattern : Event-Driven Architecture (messages asynchrones via Redis
+Streams/NATS)</li>
+<li>Avantage : Découplage, résilience, montée en charge</li>
+</ul></li>
+<li><strong>Gestion des Documents</strong> :
+<ul>
+<li>Stockage : Docuware (externalisé) + metadata dans PostgreSQL</li>
+<li>Indexation : Elasticsearch pour la recherche full-text</li>
+</ul></li>
+<li><strong>Sécurité</strong> :
+<ul>
+<li>Authentification : JWT avec refresh tokens</li>
+<li>Autorisation : RBAC (Role-Based Access Control)</li>
+<li>Chiffrement : AES-256 au repos, TLS 1.3 en transit</li>
+</ul></li>
+<li><strong>Monitoring</strong> :
+<ul>
+<li>Outils : Prometheus/Grafana + Sentry</li>
+<li>Métriques : Latence des APIs, taux d’erreur, saturation</li>
+</ul></li>
+</ol>
+<h2 id="schéma-de-base-de-données-core">Schéma de Base de Données
+(Core)</h2>
+<pre><code>User (id, email, password_hash, role, ...)
+Machine (id, serial_number, model, status [ENUM], gps_device_id, ...)
+MachineDocument (id, machine_id, doc_type [ENUM], expiry_date, file_url)
+Contract (id, client_id, start_date, end_date, status [DRAFT/SIGNED/...], pdf_url)
+Quote (id, contract_id, amount, status [PENDING/ACCEPTED/...])
+Reservation (id, machine_id, operator_id, start_time, end_time, purpose)</code></pre>
+<h2 id="évolutivité">Évolutivité</h2>
+<ul>
+<li><strong>Scale Horizontal</strong> : Chaque service déployable
+indépendamment (Docker/K8s)</li>
+<li><strong>Cache</strong> : Redis pour les données fréquemment lues
+(ex: liste machines)</li>
+<li><strong>Async Processing</strong> : Arrière-plans lourds (génération
+rapports) via queues (RabbitMQ)</li>
+</ul>
+<p>Ce design assure une séparation claire des responsabilités tout en
+permettant des intégrations flexibles avec les systèmes existants. La
+robustesse de Rust garantit la fiabilité des traitements critiques comme
+la gestion des contrats ou le suivi temps réel.</p>
+<hr />
+</main>
+</body>
+</html>

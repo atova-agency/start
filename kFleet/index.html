@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" color-mode="" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>kFleet: Analyse &amp; Recommandations - Système HFF Rental</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://atova-agency.github.io/start/komandy/static/css/vp_komandy.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">kFleet: Analyse &amp; Recommandations - Système HFF
+Rental</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#note-pour-product-owner"
+id="toc-note-pour-product-owner">NOTE: Pour Product Owner</a></li>
+<li><a href="#mvp-optimisé" id="toc-mvp-optimisé">MVP Optimisé</a></li>
+</ul>
+</nav>
+<main>
+<p>Hi Pat, Have a look and tell me what you think.</p>
+<div class="focus">
+<h3>
+Voir aussi
+</h3>
+<div class="desc">
+<ul>
+<li><p>Analyse &amp; Recommandations</p></li>
+<li><p><a
+href="001.Software_Design_desktop.html">Software_Design_desktop</a></p></li>
+<li><p><a
+href="002.Software_Design_mobile.html">Software_Design_mobile</a></p></li>
+<li><p><a href="003.Sprint.html">Sprint</a></p></li>
+</ul>
+<p>This one is for us only. - <a
+href="004.Plan%20Financier%202025.html">Plan Financier 2025</a></p>
+</div>
+</div>
+<hr />
+<h1 id="note-pour-product-owner">NOTE: Pour Product Owner</h1>
+<p>Non-Technique<br />
+<em>Version 1.0 - Juillet 2025</em></p>
+<hr />
+<h3 id="contexte-simplifié"><strong>1. Contexte Simplifié</strong></h3>
+<p><strong>Problème Central :</strong></p>
+<p>Gérer efficacement 3 flux critiques :<br />
+- 🚜 <strong>Machines</strong> (localisation, disponibilité,
+maintenance)<br />
+- 📑 <strong>Contrats</strong> (devis → signature → facturation)<br />
+- 👷 <strong>Personnel</strong> (compétences, affectations,
+documents)</p>
+<p><strong>Solution Proposée :</strong><br />
+Une plateforme unique intégrant :<br />
+- <strong>Application Web</strong> (pour superviseurs/bureaux)<br />
+- <strong>Application Mobile</strong> (pour opérateurs terrain)<br />
+- <strong>Synchronisation temps réel</strong> entre tous les acteurs</p>
+<hr />
+<h3 id="architecture-en-image"><strong>2. Architecture en
+Image</strong></h3>
+<pre class="plaintext"><code>[Odoo/Docuware] ← API → [Backend Rust] ←→ [PostgreSQL]  
+                      ↑              ↓  
+            [Web Next.js]     [Mobile React Native]  </code></pre>
+<p><strong>Analogie pour le profane :</strong><br />
+- <strong>PostgreSQL =</strong> Grand classeur numérique organisé<br />
+- <strong>Rust =</strong> Moteur ultra-rapide et fiable<br />
+- <strong>Next.js =</strong> Interface bureau intuitive (comme un
+tableau de bord avion)<br />
+- <strong>Mobile App =</strong> Assistant terrain intelligent</p>
+<hr />
+<h3 id="fonctionnalités-clés-par-module"><strong>3. Fonctionnalités Clés
+par Module</strong></h3>
+<h4 id="suivi-des-machines"><strong>🔧 Suivi des Machines</strong></h4>
+<ul>
+<li><strong>Carte Temps Réel :</strong>
+<ul>
+<li>Machines en 🔴/🟢 selon disponibilité<br />
+</li>
+<li>Cliquer pour voir : client, contrat, chauffeur<br />
+</li>
+</ul></li>
+<li><strong>Alertes Automatiques :</strong>
+<ul>
+<li>📅 Assurance → Notification 30j avant expiration<br />
+</li>
+<li>⚠️ Contrôle technique → Alerte directe au responsable</li>
+</ul></li>
+</ul>
+<h4 id="gestion-des-contrats"><strong>📝 Gestion des
+Contrats</strong></h4>
+<ul>
+<li><strong>Workflow 100% Digital :</strong></li>
+</ul>
+<figure>
+<img src="./Workflow_100per100_Digital.svg"
+alt="Workflow 100% Digital" />
+<figcaption aria-hidden="true">Workflow 100% Digital</figcaption>
+</figure>
+<pre class="mermaid"><code>graph LR
+  A[Devis Odoo] --&gt;|Auto| B[Signature Docuware]
+  B --&gt; C[Contrat Actif]
+  C --&gt;|Fin de mois| D[Facture Auto]</code></pre>
+<ul>
+<li><strong>Avantage Métier :</strong> Réduction du temps de traitement
+de 5j → 1h</li>
+</ul>
+<h4 id="gestion-du-personnel"><strong>👥 Gestion du
+Personnel</strong></h4>
+<ul>
+<li><strong>Fiche Opérateur Intelligente :</strong>
+<ul>
+<li>Permis/Visites médicales : alertes avant expiration<br />
+</li>
+<li>Compétences : matching automatique avec machines<br />
+</li>
+</ul></li>
+<li><strong>Planning Dynamique :</strong> Affectation en 1 clic</li>
+</ul>
+<hr />
+<h3 id="application-mobile-rôle-suggestions-damélioration"><strong>4.
+Application Mobile : Rôle &amp; Suggestions d’Amélioration</strong></h3>
+<h4 id="rôle-actuel-dans-le-cahier-des-charges"><strong>Rôle Actuel dans
+le Cahier des Charges</strong></h4>
+<ul>
+<li>✅ <strong>Checklists Quotidiens</strong>
+<ul>
+<li>Contrôle technique basique<br />
+</li>
+<li>Signature numérique</li>
+</ul></li>
+</ul>
+<h4 id="suggestions-pour-maximiser-lutilité"><strong>Suggestions pour
+Maximiser l’Utilité</strong></h4>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 51%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fonctionnalité</th>
+<th>Impact Métier</th>
+<th>Coût Estimé</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Scan QR Machine</strong></td>
+<td>Élimine les erreurs de saisie</td>
+<td>+0 jour</td>
+</tr>
+<tr class="even">
+<td><strong>2. Suivi Carburant</strong></td>
+<td>Réduction coûts + détection anomalies</td>
+<td>+3 jours</td>
+</tr>
+<tr class="odd">
+<td><strong>3. Chat Intégré</strong></td>
+<td>Communication directe chauffeur←→superviseur</td>
+<td>+5 jours</td>
+</tr>
+<tr class="even">
+<td><strong>4. Mode Hors-Ligne Avancé</strong></td>
+<td>Travail en zones isolées (chantiers)</td>
+<td>+10 jours</td>
+</tr>
+<tr class="odd">
+<td><strong>5. Rapport Photo Automatique</strong></td>
+<td>Preuves pour assurances/clients</td>
+<td>+7 jours</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Priorisation Recommandée :</strong><br />
+1. <strong>Scan QR</strong> → Gain immédiat en fiabilité<br />
+2. <strong>Suivi Carburant</strong> → ROI rapide (économie 10-15%
+carburant)<br />
+3. <strong>Rapport Photo</strong> → Réduction litiges clients</p>
+<hr />
+<h3 id="calendrier-réalisable-septembre-2025---mars-2026"><strong>5.
+Calendrier Réalisable (Septembre 2025 - Mars 2026)</strong></h3>
+<figure>
+<img src="./cal_dev.svg" alt="Calendrier Septembre 2025 - Mars 2026" />
+<figcaption aria-hidden="true">Calendrier Septembre 2025 - Mars
+2026</figcaption>
+</figure>
+<pre class="mermaid"><code>gantt
+    title Calendrier de Déploiement
+    dateFormat  YYYY-MM-DD
+    section Phase 1 (Fondations)
+    Architecture DB         :2025-09-01, 30d
+    Module Machines         :2025-10-01, 45d
+    section Phase 2 (Cœur Métier)
+    Contrats/Facturation    :2025-11-15, 60d
+    Application Mobile MVP  :2026-01-01, 45d
+    section Phase 3 (Optimisation)
+    Intégrations Complètes  :2026-02-15, 30d
+    Formation/Déploiement   :2026-03-15, 15d</code></pre>
+<p><strong>Points Clés :</strong><br />
+- <strong>Livraison Progressive :</strong> Fonctionnalités utilisables
+dès décembre 2025<br />
+- <strong>Tests Terrain :</strong> Janvier 2026 avec 5 opérateurs
+pilotes<br />
+- <strong>Formation :</strong> 2 jours par service (logistique,
+administratif, terrain)</p>
+<hr />
+<h3 id="risques-atténuation"><strong>6. Risques &amp;
+Atténuation</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Risque</th>
+<th>Solution Proposée</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Retard intégrations</td>
+<td>Utiliser données fictives pour tests</td>
+</tr>
+<tr class="even">
+<td>Adoption mobile limitée</td>
+<td>Ateliers terrain + design simplifié</td>
+</tr>
+<tr class="odd">
+<td>Surcharge fonctionnelle</td>
+<td>Focus strict sur MVP priorisé</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="recommandations-stratégiques"><strong>7. Recommandations
+Stratégiques</strong></h3>
+<ol type="1">
+<li><strong>Budget Mobile :</strong> Allouer +15% pour les suggestions
+(ROI garanti)<br />
+</li>
+<li><strong>Pilotage Utilisateurs :</strong>
+<ul>
+<li>Comité mensuel avec 1 chauffeur + 1 administratif<br />
+</li>
+</ul></li>
+<li><strong>Indicateurs Succès :</strong>
+<ul>
+<li>⏱️ Temps moyen génération devis<br />
+</li>
+<li>📱 Taux d’utilisation mobile<br />
+</li>
+<li>💰 Coût carburant/machine</li>
+</ul></li>
+<li><strong>Évolution Future :</strong>
+<ul>
+<li>IA prédictive (panne machines → maintenance préventive)</li>
+</ul></li>
+</ol>
+<hr />
+<p><strong>Conclusion :</strong><br />
+Ce système transformera la gestion HFF Rental avec :<br />
+- ➕ <strong>20% de productivité</strong> administrative<br />
+- ➖ <strong>30% de coûts imprévus</strong> (maintenance, litiges)<br />
+- 🌟 <strong>Expérience client</strong> unifiée et professionnelle</p>
+<p><strong>Prochaine Étape :</strong><br />
+Validation des suggestions mobile et priorisation avec les équipes
+terrain.<br />
+Contrat MVP</p>
+<h1 id="mvp-optimisé">MVP Optimisé</h1>
+<h3
+id="récapitulatif-du-projet-hff-rental---mvp-optimisé"><strong>Récapitulatif
+du Projet HFF Rental - MVP Optimisé</strong></h3>
+<p><strong>Budget MVP : 12 420 €</strong> (59 616 000 MGA)<br />
+<strong>Abonnement :</strong></p>
+<ul>
+<li><strong>15€/véhicule</strong> (1-50 véhicules)<br />
+</li>
+<li><strong>10€/véhicule</strong> (&gt;50 véhicules)</li>
+</ul>
+<hr />
+<h3 id="fonctionnalités-du-mvp"><strong>Fonctionnalités du
+MVP</strong></h3>
+<p><em>(Focus exclusif sur l’essentiel opérationnel)</em></p>
+<h4 id="cœur-métier-mobile-70-du-budget"><strong>1. 🎯 Cœur Métier
+Mobile (70% du budget)</strong></h4>
+<table>
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 50%" />
+<col style="width: 18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fonctionnalité</th>
+<th>Description Technique</th>
+<th>Impact Métier</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Checklists Intelligents</strong></td>
+<td>- 25 points de contrôle prédéfinis<br>- Capture photo avec
+annotation<br>- Signature numérique horodatée</td>
+<td>Réduction des erreurs de 90%</td>
+</tr>
+<tr class="even">
+<td><strong>Scan QR Machine</strong></td>
+<td>Reconnaissance des équipements en 0.5s<br>Intégration avec la base
+flotte</td>
+<td>Élimination des saisies manuelles</td>
+</tr>
+<tr class="odd">
+<td><strong>Rapports Photo Auto</strong></td>
+<td>Génération PDF avec géolocalisation<br>Envoi automatique au
+superviseur</td>
+<td>Preuves irréfutables pour assurances</td>
+</tr>
+<tr class="even">
+<td><strong>Mode Hors-Ligne</strong></td>
+<td>Fonctionnement 48h sans internet<br>Synchronisation différée</td>
+<td>Disponibilité en zones isolées</td>
+</tr>
+</tbody>
+</table>
+<h4 id="backend-rust-minimaliste-20-du-budget"><strong>2. 💾 Backend
+Rust Minimaliste (20% du budget)</strong></h4>
+<ul>
+<li><strong>Synchronisation mobile</strong> : Transfert crypté AES-256
+des checklists<br />
+</li>
+<li><strong>Alertes automatiques</strong> :</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Vérification quotidienne à 6h</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">fn</span> check_alerts() <span class="op">{</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> machine <span class="kw">in</span> <span class="op">&amp;</span>machines <span class="op">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> machine<span class="op">.</span>insurance_expiry <span class="op">-</span> now() <span class="op">&lt;</span> <span class="dv">30</span><span class="op">.</span>days() <span class="op">{</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            send_alert(supervisor<span class="op">,</span> machine)<span class="op">;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<ul>
+<li><strong>Gestion contrats basique</strong> : Stockage PDF + rappels
+échéances</li>
+</ul>
+<h4 id="tableau-de-bord-web-essentiel-10-du-budget"><strong>3. 📊
+Tableau de Bord Web Essentiel (10% du budget)</strong></h4>
+<table>
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Écran</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Supervision Flotte</td>
+<td>- Taux complétion checklists<br>- Statut machines (🟢/🔴)</td>
+</tr>
+<tr class="even">
+<td>Alertes Centralisées</td>
+<td>- Documents expirés<br>- Anomalies terrain</td>
+</tr>
+<tr class="odd">
+<td>Gestion Contrats</td>
+<td>Liste PDF + dates clés</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="exclusions-stratégiques-réduction-des-coûts"><strong>Exclusions
+Stratégiques (Réduction des coûts)</strong></h3>
+<ul>
+<li>🚫 <strong>Carte temps réel</strong> → Remplacé par liste
+géotaggée<br />
+</li>
+<li>🚫 <strong>Intégration Odoo/Docuware</strong> → Import/export CSV
+manuel<br />
+</li>
+<li>🚫 <strong>Workflow signature électronique</strong> → Email avec PDF
+joint<br />
+</li>
+<li>🚫 <strong>Reporting avancé</strong> → Export Excel brut</li>
+</ul>
+<hr />
+<h3 id="calendrier-et-livrables"><strong>Calendrier et
+Livrables</strong></h3>
+<figure>
+<img src="./calendrier_et_livrables.svg"
+alt="Calendrier et Livrables" />
+<figcaption aria-hidden="true">Calendrier et Livrables</figcaption>
+</figure>
+<pre class="mermaid"><code>gantt
+    title MVP 100% Madagascar - 6 Mois
+    dateFormat  YYYY-MM-DD
+    section Développement
+    Backend Rust           : 2025-09-01, 90d
+    Application Mobile     : 2025-10-01, 120d
+    Tableau de bord web    : 2025-12-01, 60d
+    section Livraison
+    Version pilote (3 sites) : 2026-01-15
+    Déploiement complet   : 2026-02-28</code></pre>
+<hr />
+<h3 id="détail-financier"><strong>Détail Financier</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Poste</th>
+<th>Coût (€)</th>
+<th>Coût (MGA)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Développeurs fullstack</td>
+<td>6 500</td>
+<td>31 200 000</td>
+</tr>
+<tr class="even">
+<td>Développeur backend</td>
+<td>3 200</td>
+<td>15 360 000</td>
+</tr>
+<tr class="odd">
+<td>Designer UX/UI</td>
+<td>1 000</td>
+<td>4 800 000</td>
+</tr>
+<tr class="even">
+<td>Outils/Infrastructure</td>
+<td>1 720</td>
+<td>8 256 000</td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td><strong>12 420 €</strong></td>
+<td><strong>59 616 000 MGA</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>Taux de change : 1 € = 4 800 MGA</em></p>
+</blockquote>
+<hr />
+<h3 id="évolution-post-mvp-optionnelle"><strong>Évolution Post-MVP
+(Optionnelle)</strong></h3>
+<table>
+<thead>
+<tr class="header">
+<th>Module</th>
+<th>Coût Additionnel</th>
+<th>Délai</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Intégration Odoo</td>
+<td>2 300 €</td>
+<td>1 mois</td>
+</tr>
+<tr class="even">
+<td>Carte temps réel</td>
+<td>1 800 €</td>
+<td>6 sem</td>
+</tr>
+<tr class="odd">
+<td>IA Maintenance prédictive</td>
+<td>3 500 €</td>
+<td>2 mois</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="avantages-clés-pour-hff-rental"><strong>Avantages Clés pour HFF
+Rental</strong></h3>
+<ol type="1">
+<li><strong>Investissement initial maîtrisé :</strong>
+<ul>
+<li>12 420 € = coût d’1 mois de location d’une pelle hydraulique<br />
+</li>
+</ul></li>
+<li><strong>Coûts récurrents prévisibles :</strong>
+<ul>
+<li>100 véhicules = 1 250 €/mois (0.3% du chiffre d’affaires
+moyen*)<br />
+</li>
+</ul></li>
+<li><strong>Déploiement ultra-rapide :</strong>
+<ul>
+<li>Solution opérationnelle en 3 mois sur les sites pilotes</li>
+</ul></li>
+</ol>
+<blockquote>
+<p><em>Hypothèse : CA mensuel = 400 000 € pour une flotte de 100
+véhicules</em></p>
+</blockquote>
+<hr />
+<h3 id="garanties-atova"><strong>Garanties Atova</strong></h3>
+<ul>
+<li>🔒 <strong>Code source propriétaire</strong> livré après paiement
+final<br />
+</li>
+<li>🔧 <strong>Maintenance incluse</strong> : 12 mois correctifs
+critiques<br />
+</li>
+<li>📈 <strong>Évolutivité garantie</strong> : Modules additionnels sans
+réécriture</li>
+</ul>
+<p><strong>Offre spéciale lancement :</strong></p>
+<ul>
+<li>2 mois d’abonnement offerts pour tout déploiement avant le
+31/03/2026</li>
+</ul>
+<hr />
+<p><strong>Conclusion :</strong><br />
+Ce MVP focalisé sur les checklists terrain et la supervision minimale
+offre un ROI immédiat, tout en conservant une voie d’évolution robuste.
+L’approche Atova permet une réalisation 3x moins chère qu’en Europe sans
+sacrifier la qualité cœur.</p>
+</main>
+</body>
+</html>

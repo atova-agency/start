@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" color-mode="" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Sprint Design</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://atova-agency.github.io/start/komandy/static/css/vp_komandy.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Sprint Design</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#sprint-design" id="toc-sprint-design">Sprint Design</a>
+<ul>
+<li><a href="#plan-de-travail-détaillé---saas-po-rental-management"
+id="toc-plan-de-travail-détaillé---saas-po-rental-management"><strong>Plan
+de Travail Détaillé - SaaS PO Rental Management</strong></a></li>
+<li><a href="#répartition-des-ressources"
+id="toc-répartition-des-ressources"><strong>Répartition des
+Ressources</strong></a></li>
+<li><a href="#points-de-validation-clés"
+id="toc-points-de-validation-clés"><strong>Points de Validation
+Clés</strong></a></li>
+<li><a href="#gestion-des-risques"
+id="toc-gestion-des-risques"><strong>Gestion des
+Risques</strong></a></li>
+<li><a href="#livrables-finaux"
+id="toc-livrables-finaux"><strong>Livrables Finaux</strong></a></li>
+<li><a href="#plan-de-travail-détaillé-16-semaines---4-mois"
+id="toc-plan-de-travail-détaillé-16-semaines---4-mois"><strong>Plan de
+Travail Détaillé (16 semaines - 4 mois)</strong></a></li>
+<li><a href="#équipe-requise" id="toc-équipe-requise"><strong>Équipe
+Requise</strong></a></li>
+<li><a href="#livrables-principaux"
+id="toc-livrables-principaux"><strong>Livrables
+Principaux</strong></a></li>
+<li><a href="#risques-atténuation"
+id="toc-risques-atténuation"><strong>Risques &amp;
+Atténuation</strong></a></li>
+</ul></li>
+</ul>
+</nav>
+<main>
+<div class="focus">
+<h3>
+Voir aussi
+</h3>
+<div class="desc">
+<ul>
+<li><a href="./index.html">Analyse &amp; Recommandations</a></li>
+<li><a
+href="001.Software_Design_desktop.html">Software_Design_desktop</a></li>
+<li><a
+href="002.Software_Design_mobile.html">Software_Design_mobile</a></li>
+<li>Sprint</li>
+</ul>
+<p>This one is for us only. - <a
+href="004.Plan%20Financier%202025.html">Plan Financier 2025</a></p>
+</div>
+</div>
+<hr />
+<h1 id="sprint-design">Sprint Design</h1>
+<h2
+id="plan-de-travail-détaillé---saas-po-rental-management"><strong>Plan
+de Travail Détaillé - SaaS PO Rental Management</strong></h2>
+<p><strong>Durée estimée : 4 mois (16 semaines)</strong><br />
+<em>Basé sur une équipe de 5 développeurs (Rust/React/React
+Native)</em></p>
+<hr />
+<h3 id="phase-1-setup-architecture-semaines-1-2"><strong>Phase 1 : Setup
+&amp; Architecture (Semaines 1-2)</strong></h3>
+<ol type="1">
+<li><strong>Environnement Technique</strong>
+<ul class="task-list">
+<li><label><input type="checkbox" />Configurer CI/CD (GitHub
+Actions)<br />
+</label></li>
+<li><label><input type="checkbox" />Mise en place infra AWS (VPC, RDS
+PostgreSQL, S3)<br />
+</label></li>
+<li><label><input type="checkbox" />Template Rust Axum + SQLx<br />
+</label></li>
+<li><label><input type="checkbox" />SDK intégrations (Odoo, Docuware,
+GPS)</label></li>
+</ul></li>
+<li><strong>Modélisation Domaine</strong>
+<ul class="task-list">
+<li><label><input type="checkbox" />Finaliser schéma DB (entités :
+Machine, Contrat, Utilisateur)<br />
+</label></li>
+<li><label><input type="checkbox" />Définir les événements métier
+principaux<br />
+</label></li>
+<li><label><input type="checkbox" />Concevoir le système
+d’authentification (RBAC)</label></li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="phase-2-backend-core-semaines-3-6"><strong>Phase 2 : Backend
+Core (Semaines 3-6)</strong></h3>
+<p><strong>Microservice Asset Tracking</strong><br />
+- [ ] API gestion machines (<code>POST /machines</code>,
+<code>GET /machines/{id}/status</code>)<br />
+- [ ] Worker temps réel MQTT (connexion trackers GPS)<br />
+- [ ] Service de documents (assurances, techniques)<br />
+- [ ] Système d’alertes (expiration documents)</p>
+<p><strong>Microservice Contracts</strong><br />
+- [ ] Workflow devis (création → validation → signature)<br />
+- [ ] Synchronisation bi-directionnelle Odoo<br />
+- [ ] Webhooks Docuware (statut signatures)<br />
+- [ ] Générateur PDF (contrats, factures)</p>
+<hr />
+<h3 id="phase-3-frontend-planning-semaines-7-10"><strong>Phase 3 :
+Frontend &amp; Planning (Semaines 7-10)</strong></h3>
+<p><strong>Application Web Admin (React)</strong><br />
+- [ ] Dashboard analytique (KPI flotte)<br />
+- [ ] Carte interactive Mapbox (clusters machines)<br />
+- [ ] Interface gestion contrats (workflow visuel)<br />
+- [ ] Éditeur de grilles tarifaires</p>
+<p><strong>Module Planning Logistique</strong><br />
+- [ ] Vue Gantt personnalisée (engins + chauffeurs)<br />
+- [ ] Algorithme d’assignation automatique<br />
+- [ ] Système de réservation self-service<br />
+- [ ] Conflits detection API</p>
+<hr />
+<h3 id="phase-4-mobile-intégrations-semaines-11-14"><strong>Phase 4 :
+Mobile &amp; Intégrations (Semaines 11-14)</strong></h3>
+<p><strong>App Mobile (React Native)</strong><br />
+- [ ] Écran carte opérationnelle (mode offline)<br />
+- [ ] Workflow signalement incidents (avec photo)<br />
+- [ ] Scanner QR code machines<br />
+- [ ] Feuille de temps géolocalisée</p>
+<p><strong>Intégrations Critiques</strong><br />
+- [ ] Connecteur Odoo (sync contrats/factures)<br />
+- [ ] Pipeline IoT (TAGIP/MTEC/VisionLink)<br />
+- [ ] Service de notifications (SMS/email)</p>
+<hr />
+<h3 id="phase-5-tests-déploiement-semaines-15-16"><strong>Phase 5 :
+Tests &amp; Déploiement (Semaines 15-16)</strong></h3>
+<p><strong>Validation</strong><br />
+- [ ] Tests de charge (Locust : 500+ machines simultanées)<br />
+- [ ] Scénarios offline complets (mobile)<br />
+- [ ] Audit sécurité (OWASP Top 10)</p>
+<p><strong>Livraison</strong><br />
+- [ ] Formation utilisateurs (3 sessions)<br />
+- [ ] Documentation technique<br />
+- [ ] Plan rollback (migration V1 → V2)</p>
+<hr />
+<h2 id="répartition-des-ressources"><strong>Répartition des
+Ressources</strong></h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 17%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Rôle</strong></th>
+<th><strong>Semaines</strong></th>
+<th><strong>Tâches Critiques</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rust Backend Lead</td>
+<td>1-16</td>
+<td>Architecture microservices, intégrations</td>
+</tr>
+<tr class="even">
+<td>React Frontend</td>
+<td>3-14</td>
+<td>Dashboard, carte interactive, planning</td>
+</tr>
+<tr class="odd">
+<td>React Native</td>
+<td>7-14</td>
+<td>App mobile terrain (offline-first)</td>
+</tr>
+<tr class="even">
+<td>DevOps</td>
+<td>1-4, 15-16</td>
+<td>Infra AWS, CI/CD, monitoring</td>
+</tr>
+<tr class="odd">
+<td>QA/Testeur</td>
+<td>10-16</td>
+<td>Scénarios métier, tests performance</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="points-de-validation-clés"><strong>Points de Validation
+Clés</strong></h2>
+<ul>
+<li><p><strong>Jalon Semaine 4</strong> :<br />
+✅ Premier flux GPS → carte temps réel<br />
+✅ CRUD machines avec documents</p></li>
+<li><p><strong>Jalon Semaine 8</strong> :<br />
+✅ Workflow devis complet (Odoo → PDF → signature)<br />
+✅ Version alpha du planning</p></li>
+<li><p><strong>Jalon Semaine 12</strong> :<br />
+✅ App mobile fonctionnelle offline<br />
+✅ Synchronisation multi-source (IoT + ERP)</p></li>
+</ul>
+<hr />
+<h2 id="gestion-des-risques"><strong>Gestion des Risques</strong></h2>
+<ol type="1">
+<li><strong>Dépendances externes</strong> :
+<ul>
+<li>Plan B : Mocks des APIs Odoo/Docuware<br />
+</li>
+<li>Contingence : +2 semaines pour intégrations</li>
+</ul></li>
+<li><strong>Performance temps réel</strong> :
+<ul>
+<li>Monitoring strict : Latence &lt; 500ms (P95)<br />
+</li>
+<li>Fallback : Synchro par batch si échec</li>
+</ul></li>
+<li><strong>Adoption terrain</strong> :
+<ul>
+<li>Programme pilote : 3 superutilisateurs<br />
+</li>
+<li>Hotline dédiée les 30 premiers jours</li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="livrables-finaux"><strong>Livrables Finaux</strong></h2>
+<ul>
+<li><strong>Code source</strong> : Repos Git organisés (monorepo)<br />
+</li>
+<li><strong>Infrastructure</strong> : Terraform + Docker images<br />
+</li>
+<li><strong>Environnements</strong> :
+<ul>
+<li>Dev / Staging / Production<br />
+</li>
+</ul></li>
+<li><strong>Kits utilisateur</strong> :
+<ul>
+<li>Guide administrateur<br />
+</li>
+<li>Fiches procédures terrain<br />
+</li>
+<li>Vidéos tutoriels (QR codes dans l’app)</li>
+</ul></li>
+</ul>
+<p>Ce plan permet une livraison incrémentale avec feedback client toutes
+les 2 semaines. La priorisation garantit que les fonctionnalités
+critiques pour PO Rakoto (suivi flotte + contrats) sont opérationnelles
+dès le mois 2.</p>
+<hr />
+<p>T:</p>
+<p>Nous allons structurer le projet en phases et sprints, en utilisant
+une approche agile. Le plan détaillé couvre la période de développement
+jusqu’au MVP (Minimum Viable Product). Le MVP inclura les modules
+essentiels pour PO Rakoto : suivi de flotte, gestion des contrats de
+base, et le planning logistique.</p>
+<h2 id="plan-de-travail-détaillé-16-semaines---4-mois"><strong>Plan de
+Travail Détaillé (16 semaines - 4 mois)</strong></h2>
+<hr />
+<h3 id="phase-0-préparation-semaines-1-2"><strong>Phase 0 : Préparation
+(Semaines 1-2)</strong></h3>
+<p><strong>Objectif</strong> : Mise en place de l’environnement et
+définition détaillée des besoins.</p>
+<ol type="1">
+<li><strong>Sprint 0.1 (Semaine 1)</strong>:
+<ul>
+<li>Réunion de lancement avec PO Rakoto.</li>
+<li>Finalisation du cahier des charges fonctionnel.</li>
+<li>Conception de l’architecture technique (backend Rust, frontend
+React, etc.).</li>
+<li>Mise en place des outils (Git, CI/CD, Jira, etc.).</li>
+<li>Création des environnements de développement (dev, staging,
+prod).</li>
+</ul></li>
+<li><strong>Sprint 0.2 (Semaine 2)</strong>:
+<ul>
+<li>Conception détaillée de la base de données (schéma Postgres).</li>
+<li>Définition des API principales (OpenAPI/Swagger).</li>
+<li>Planification des intégrations (Odoo, Docuware, GPS).</li>
+<li>Recrutement de l’équipe supplémentaire si nécessaire.</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="phase-1-développement-du-noyau-semaines-3-8"><strong>Phase 1 :
+Développement du Noyau (Semaines 3-8)</strong></h3>
+<p><strong>Objectif</strong> : Implémenter les services backend
+critiques et l’infrastructure frontend.</p>
+<ol start="3" type="1">
+<li><strong>Sprint 1.1 (Semaines 3-4)</strong>:
+<ul>
+<li><strong>Backend</strong>:
+<ul>
+<li>Service Asset: Modèle de données, CRUD machines, endpoints de
+base.</li>
+<li>Intégration GPS simulée (MQTT mock).</li>
+<li>Gestion des documents (stockage S3, métadonnées en DB).</li>
+</ul></li>
+<li><strong>Frontend</strong>:
+<ul>
+<li>Setup de l’application React.</li>
+<li>Page de login et authentification (JWT).</li>
+<li>Page tableau de bord vide (structure).</li>
+</ul></li>
+</ul></li>
+<li><strong>Sprint 1.2 (Semaines 5-6)</strong>:
+<ul>
+<li><strong>Backend</strong>:
+<ul>
+<li>Service Contract: Modèle contrats/devis, génération PDF de
+base.</li>
+<li>Synchronisation Odoo (mock initial).</li>
+<li>Service Planning: Modèle de réservation, algorithme d’assignation
+simple.</li>
+</ul></li>
+<li><strong>Frontend</strong>:
+<ul>
+<li>Page liste des machines (données mockées).</li>
+<li>Fiche détaillée machine (onglets: info, documents, historique).</li>
+</ul></li>
+</ul></li>
+<li><strong>Sprint 1.3 (Semaines 7-8)</strong>:
+<ul>
+<li><strong>Backend</strong>:
+<ul>
+<li>Service Reporting: Collecte d’événements, aggregation basique.</li>
+<li>Mise en place de l’Event Bus (Redis Streams).</li>
+<li>Alertes (cron pour vérification documents expirés).</li>
+</ul></li>
+<li><strong>Frontend</strong>:
+<ul>
+<li>Carte interactive (Mapbox) avec marqueurs machines.</li>
+<li>Page planning (calendrier simple avec réservations).</li>
+</ul></li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="phase-2-modules-métier-semaines-9-12"><strong>Phase 2 : Modules
+Métier (Semaines 9-12)</strong></h3>
+<p><strong>Objectif</strong> : Développer les workflows métier
+prioritaires.</p>
+<ol start="6" type="1">
+<li><strong>Sprint 2.1 (Semaines 9-10)</strong>:
+<ul>
+<li><strong>Backend</strong>:
+<ul>
+<li>Workflow devis: génération → envoi → signature (intégration Docuware
+mock).</li>
+<li>Facturation automatique (cron fin de mois).</li>
+<li>Notifications (emails, push).</li>
+</ul></li>
+<li><strong>Frontend</strong>:
+<ul>
+<li>Workflow devis: formulaire de création, suivi des étapes.</li>
+<li>Page contrat: visualisation, statut, actions (relancer,
+signer).</li>
+</ul></li>
+</ul></li>
+<li><strong>Sprint 2.2 (Semaines 11-12)</strong>:
+<ul>
+<li><strong>Backend</strong>:
+<ul>
+<li>Gestion des conflits de planning.</li>
+<li>Optimisation assignation chauffeurs (règles métier).</li>
+<li>Synchronisation temps réel mobile ↔︎ cloud.</li>
+</ul></li>
+<li><strong>Frontend</strong>:
+<ul>
+<li>Interface de réassignation rapide (glisser-déposer).</li>
+<li>Gestion des incidents (formulaire + historique).</li>
+</ul></li>
+</ul></li>
+</ol>
+<hr />
+<h3
+id="phase-3-application-mobile-intégrations-semaines-13-16"><strong>Phase
+3 : Application Mobile &amp; Intégrations (Semaines 13-16)</strong></h3>
+<p><strong>Objectif</strong> : Livrer les applications terrain et
+finaliser les intégrations.</p>
+<ol start="8" type="1">
+<li><strong>Sprint 3.1 (Semaines 13-14)</strong>:
+<ul>
+<li><strong>Mobile (React Native)</strong>:
+<ul>
+<li>Authentification.</li>
+<li>Tableau de bord chauffeur (missions du jour).</li>
+<li>Signalement d’incident (avec photo).</li>
+<li>Feuille de temps automatique.</li>
+</ul></li>
+<li><strong>Intégrations</strong>:
+<ul>
+<li>Connexion réelle aux trackers GPS (protocole MQTT).</li>
+<li>Sync Odoo (API réelle).</li>
+</ul></li>
+</ul></li>
+<li><strong>Sprint 3.2 (Semaines 15-16)</strong>:
+<ul>
+<li><strong>Mobile</strong>:
+<ul>
+<li>Fiche machine offline (QR code scan).</li>
+<li>Workflow maintenance pour techniciens.</li>
+<li>Carte opérationnelle superviseur.</li>
+</ul></li>
+<li><strong>Backend/Frontend</strong>:
+<ul>
+<li>Reporting de base (tableaux de bord).</li>
+<li>Intégration Docuware réelle.</li>
+</ul></li>
+<li><strong>MVP Finalisation</strong>:
+<ul>
+<li>Tests utilisateurs sur site.</li>
+<li>Documentation technique et utilisateur.</li>
+<li>Déploiement en pré-production.</li>
+</ul></li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="phase-4-livraison-post-mvp-semaine-17"><strong>Phase 4 :
+Livraison &amp; Post-MVP (Semaine 17+)</strong></h3>
+<ul>
+<li><strong>Semaine 17</strong> : Formation utilisateurs, déploiement
+production.</li>
+<li><strong>Semaine 18+</strong> : Correctifs, améliorations, et début
+des développements pour les fonctionnalités avancées (analytics,
+etc.).</li>
+</ul>
+<hr />
+<h2 id="équipe-requise"><strong>Équipe Requise</strong></h2>
+<ul>
+<li><strong>Chef de Projet</strong> : 1 (20% du temps)</li>
+<li><strong>Développeurs Rust/Backend</strong> : 2 (100%)</li>
+<li><strong>Développeurs Frontend (React)</strong> : 1 (100%)</li>
+<li><strong>Développeur Mobile (React Native)</strong> : 1 (100%)</li>
+<li><strong>DevOps/Infra</strong> : 1 (50%)</li>
+</ul>
+<hr />
+<h2 id="livrables-principaux"><strong>Livrables Principaux</strong></h2>
+<ul>
+<li><strong>Fin Phase 1</strong> : API fonctionnelle, frontend de base
+avec carte et liste machines.</li>
+<li><strong>Fin Phase 2</strong> : Workflow devis/contrat, planning
+interactif.</li>
+<li><strong>Fin Phase 3</strong> : Applications mobiles fonctionnelles,
+intégrations GPS et Odoo.</li>
+</ul>
+<hr />
+<h2 id="risques-atténuation"><strong>Risques &amp;
+Atténuation</strong></h2>
+<ol type="1">
+<li><strong>Intégrations complexes</strong> (Odoo/Docuware) :
+<ul>
+<li>Commencer tôt avec des mocks, prévoir du temps pour
+l’adaptation.</li>
+</ul></li>
+<li><strong>Connectivité terrain à Madagascar</strong> :
+<ul>
+<li>Design offline-first mobile, compression des données.</li>
+</ul></li>
+<li><strong>Changement de scope</strong> :
+<ul>
+<li>Processus strict de gestion des demandes (nouveau devis).</li>
+</ul></li>
+</ol>
+<p>Ce plan permet une livraison incrémentale avec feedback régulier du
+client.<br />
+La stack Rust garantit que les coûts infrastructure resteront bas malgré
+la charge.</p>
+</main>
+</body>
+</html>

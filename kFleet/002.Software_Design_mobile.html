@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" color-mode="" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>SW Design: Mobile</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="https://atova-agency.github.io/start/komandy/static/css/vp_komandy.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">SW Design: Mobile</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#sw-design-mobile" id="toc-sw-design-mobile">SW Design:
+Mobile</a>
+<ul>
+<li><a
+href="#application-mobile-pour-terrain-btp---fonctionnalités-clés"
+id="toc-application-mobile-pour-terrain-btp---fonctionnalités-clés"><strong>Application
+Mobile pour Terrain BTP - Fonctionnalités Clés</strong></a></li>
+<li><a href="#fonctionnalités-terrain-essentielles"
+id="toc-fonctionnalités-terrain-essentielles"><strong>2. Fonctionnalités
+Terrain Essentielles</strong></a></li>
+<li><a href="#design-technique-mobile"
+id="toc-design-technique-mobile"><strong>3. Design Technique
+Mobile</strong></a></li>
+<li><a href="#ux-adaptée-aux-contraintes-terrain"
+id="toc-ux-adaptée-aux-contraintes-terrain"><strong>4. UX Adaptée aux
+Contraintes Terrain</strong></a></li>
+<li><a href="#intégrations-matérielles"
+id="toc-intégrations-matérielles"><strong>5. Intégrations
+Matérielles</strong></a></li>
+<li><a href="#cas-concrets-dusage"
+id="toc-cas-concrets-dusage"><strong>6. Cas Concrets
+d’Usage</strong></a></li>
+<li><a href="#métriques-de-performance"
+id="toc-métriques-de-performance"><strong>7. Métriques de
+Performance</strong></a></li>
+<li><a href="#réassignation-express---workflow-ascii"
+id="toc-réassignation-express---workflow-ascii"><strong>Réassignation
+Express - Workflow ASCII</strong></a></li>
+<li><a href="#points-clés-technique"
+id="toc-points-clés-technique"><strong>Points Clés
+Technique</strong></a></li>
+<li><a href="#fonctionnalités-clés-par-rôle"
+id="toc-fonctionnalités-clés-par-rôle"><strong>Fonctionnalités Clés par
+Rôle</strong></a></li>
+<li><a href="#design-dinterface-terrain-ux-critères"
+id="toc-design-dinterface-terrain-ux-critères"><strong>Design
+d’Interface Terrain (UX Critères)</strong></a></li>
+<li><a href="#techniques-offlinecloud-sync"
+id="toc-techniques-offlinecloud-sync"><strong>Techniques Offline/Cloud
+Sync</strong></a></li>
+<li><a href="#sécurité-données-terrain"
+id="toc-sécurité-données-terrain"><strong>Sécurité Données
+Terrain</strong></a></li>
+<li><a href="#intégrations-matérielles-1"
+id="toc-intégrations-matérielles-1"><strong>Intégrations
+Matérielles</strong></a></li>
+<li><a href="#indicateurs-de-performance"
+id="toc-indicateurs-de-performance"><strong>Indicateurs de
+Performance</strong></a></li>
+</ul></li>
+</ul>
+</nav>
+<main>
+<div class="focus">
+<h3>
+Voir aussi
+</h3>
+<div class="desc">
+<ul>
+<li><a href="./index.html">Analyse &amp; Recommandations</a></li>
+<li><a
+href="001.Software_Design_desktop.html">Software_Design_desktop</a></li>
+<li>Software_Design_mobile</li>
+<li><a href="003.Sprint.html">Sprint</a></li>
+</ul>
+<p>This one is for us only. - <a
+href="004.Plan%20Financier%202025.html">Plan Financier 2025</a></p>
+</div>
+</div>
+<hr />
+<h1 id="sw-design-mobile">SW Design: Mobile</h1>
+<h2
+id="application-mobile-pour-terrain-btp---fonctionnalités-clés"><strong>Application
+Mobile pour Terrain BTP - Fonctionnalités Clés</strong></h2>
+<p><strong>(Pour Superviseurs, Chauffeurs et Techniciens)</strong></p>
+<hr />
+<h3 id="profils-utilisateurs-accès"><strong>1. Profils Utilisateurs
+&amp; Accès</strong></h3>
+<table>
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 45%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Rôle</strong></th>
+<th><strong>Permissions</strong></th>
+<th><strong>Scénarios d’Usage</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Chauffeur</strong></td>
+<td>Voir missions • Signaler incidents • Pointage</td>
+<td>Suivi quotidien des tâches</td>
+</tr>
+<tr class="even">
+<td><strong>Technicien</strong></td>
+<td>Accès fiches machines • Rapport maintenance</td>
+<td>Interventions sur engins</td>
+</tr>
+<tr class="odd">
+<td><strong>Superviseur</strong></td>
+<td>Gestion temps réel • Réassignation • Validation</td>
+<td>Supervision opérationnelle</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="fonctionnalités-terrain-essentielles"><strong>2. Fonctionnalités
+Terrain Essentielles</strong></h2>
+<h3 id="a-pour-les-chauffeurs"><strong>a) Pour les
+Chauffeurs</strong></h3>
+<p><strong>• Tableau de Bord Personnel</strong></p>
+<pre><code>[Bonjour {Nom}!]  
+● Mission en cours :  
+  - Engin : Pelle X-200  
+  - Client : COLAS Ambatovy  
+  - Durée : 4h30 (restant)  
+● Prochaine mission : 14h00 - Dump Truck Y-300  </code></pre>
+<p><strong>• Signalement d’Incident en 1 Click</strong></p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;IncidentForm&gt;</span>  </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;Button</span> <span class="ot">type</span><span class="op">=</span><span class="st">&quot;mechanical&quot;</span><span class="fu">&gt;</span>Panne Mécanique<span class="fu">&lt;/Button&gt;</span>  </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;Button</span> <span class="ot">type</span><span class="op">=</span><span class="st">&quot;safety&quot;</span><span class="fu">&gt;</span>Problème Sécurité<span class="fu">&lt;/Button&gt;</span>  </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;Button</span> <span class="ot">type</span><span class="op">=</span><span class="st">&quot;other&quot;</span><span class="fu">&gt;</span>Autre...<span class="fu">&lt;/Button&gt;</span>  </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;PhotoUpload</span> <span class="fu">/&gt;</span> // Preuve visuelle  </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;/IncidentForm&gt;</span>  </span></code></pre></div>
+<p>→ Notification immédiate au superviseur</p>
+<p><strong>• Feuille de Temps Automatisée</strong><br />
+- Début/fin de mission via géolocalisation<br />
+- Synchronisation avec le planning central</p>
+<hr />
+<h3 id="b-pour-les-techniciens"><strong>b) Pour les
+Techniciens</strong></h3>
+<p><strong>• Accès Offline aux Fiches Machines</strong></p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> MachineOfflineData <span class="op">{</span>  </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    id<span class="op">:</span> UUID<span class="op">,</span>  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    manual<span class="op">:</span> PDF<span class="op">,</span>  </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    last_maintenance<span class="op">:</span> DateTime<span class="op">,</span>  </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    parts_list<span class="op">:</span> <span class="dt">Vec</span><span class="op">&lt;</span>Part<span class="op">&gt;</span>  </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>  </span></code></pre></div>
+<p>→ Téléchargement préalable sur WiFi</p>
+<p><strong>• Workflow Maintenance</strong></p>
+<ol type="1">
+<li>Scanner QR code de la machine<br />
+</li>
+<li>Consulter l’historique d’interventions<br />
+</li>
+<li>Saisir le rapport :
+<ul>
+<li>Pièces remplacées<br />
+</li>
+<li>Temps passé<br />
+</li>
+<li>Photos avant/après</li>
+</ul></li>
+</ol>
+<hr />
+<h3 id="c-pour-les-superviseurs"><strong>c) Pour les
+Superviseurs</strong></h3>
+<p><strong>• Carte Opérationnelle Temps Réel</strong></p>
+<pre><code>[Layer 1] Position des engins (● Vert = actif, ● Rouge = alerte)  
+[Layer 2] Zones chantiers  
+[Layer 3] Itinéraires optimisés  </code></pre>
+<p>→ Filtres par : statut, type d’engin, client</p>
+<p><strong>• Réassignation Express</strong></p>
+<pre class="mermaid"><code>graph TD  
+    A(Engin en panne) --&gt; B{Chauffeurs disponibles}  
+    B --&gt; C[Compétences requises?]  
+    C --&gt; D((Réassigner))  </code></pre>
+<p>→ Notification push au nouveau chauffeur</p>
+<p><strong>• Validation des Pointages</strong><br />
+- Liste des équipes avec statut (✅ Présent • ⚠ Retard • ❌
+Absent)<br />
+- Justification des écarts en commentaire</p>
+<hr />
+<h2 id="design-technique-mobile"><strong>3. Design Technique
+Mobile</strong></h2>
+<h3 id="architecture-offline-first"><strong>Architecture
+Offline-First</strong></h3>
+<pre><code>┌─────────────────┐       ┌─────────────────┐  
+│                 │       │                 │  
+│   App Mobile    │ ◄───► │  Sync Service   │  
+│ (React Native)  │       │  (Rust + MQTT)  │  
+│                 │       │                 │  
+└───────┬─────────┘       └───────▲─────────┘  
+        │  SQLite                 │  
+        │  (Données locales)      │  
+        │                         │  
+┌───────▼─────────┐       ┌───────┴─────────┐  
+│                 │       │                 │  
+│   Terrain       │       │    Cloud API    │  
+│  (Connectivité  │       │                 │  
+│  intermittente) │       └─────────────────┘  
+└─────────────────┘  </code></pre>
+<h3 id="synchronisation-intelligente"><strong>Synchronisation
+Intelligente</strong></h3>
+<ul>
+<li><strong>Priorité 1</strong> : Signalements d’incidents<br />
+</li>
+<li><strong>Priorité 2</strong> : Feuilles de temps<br />
+</li>
+<li><strong>Mode Batch</strong> : Stockage local + envoi groupé quand
+réseau disponible</li>
+</ul>
+<hr />
+<h2 id="ux-adaptée-aux-contraintes-terrain"><strong>4. UX Adaptée aux
+Contraintes Terrain</strong></h2>
+<h3 id="a-interface-gants-de-travail"><strong>a) Interface “Gants de
+Travail”</strong></h3>
+<ul>
+<li><p>Boutons surdimensionnés (&gt;48x48px)<br />
+</p></li>
+<li><p>Palette de couleurs à contraste élevé<br />
+</p></li>
+<li><p>Commandes vocales :</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;VoiceCommand&gt;</span>  </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  &quot;Nouveau rapport - Pelle X200 - Fuite hydraulique&quot;  </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;/VoiceCommand&gt;</span>  </span></code></pre></div></li>
+</ul>
+<h3 id="b-optimisation-batterieréseau"><strong>b) Optimisation
+Batterie/Réseau</strong></h3>
+<ul>
+<li>Scan QR code → -80% de saisie manuelle<br />
+</li>
+<li>Compression des images (WebP)<br />
+</li>
+<li>Mise en veille des capteurs inactifs</li>
+</ul>
+<hr />
+<h2 id="intégrations-matérielles"><strong>5. Intégrations
+Matérielles</strong></h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 40%" />
+<col style="width: 34%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Périphérique</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>API/Protocole</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scanner Bluetooth</td>
+<td>Lecture QR code machines</td>
+<td>react-ble-plx</td>
+</tr>
+<tr class="even">
+<td>Montre Connectée</td>
+<td>Notifications missions</td>
+<td>Wear OS SDK</td>
+</tr>
+<tr class="odd">
+<td>OBD2 Dongle</td>
+<td>Diagnostics temps réel</td>
+<td>MQTT over BLE</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="cas-concrets-dusage"><strong>6. Cas Concrets
+d’Usage</strong></h2>
+<p><strong>Scénario 1 : Panne sur Chantier Isolé</strong></p>
+<ol type="1">
+<li>Chauffeur signale une panne ➔ Photo joint<br />
+</li>
+<li>Superviseur reçoit l’alerte ➔ Consulte la fiche machine<br />
+</li>
+<li>Technicien reçoit la tâche ➔ Accède au manuel offline<br />
+</li>
+<li>Réparation validée ➔ Mise à jour automatique du statut</li>
+</ol>
+<p><strong>Scénario 2 : Réassignation Express</strong></p>
+<pre><code>[SUPERVISEUR]  
+Glisser-déposer un chauffeur disponible  
+→ &quot;Mora assigné à la Pelle X200&quot;  
+
+[CHAUFFEUR]  
+Notification : &quot;Nouvelle mission dans 15mn - Localisation 📍&quot;  </code></pre>
+<hr />
+<h2 id="métriques-de-performance"><strong>7. Métriques de
+Performance</strong></h2>
+<ul>
+<li>⏱ <strong>Temps moyen par opération</strong> :
+<ul>
+<li>Signalement incident : &lt; 45 sec<br />
+</li>
+<li>Pointage : &lt; 10 sec<br />
+</li>
+</ul></li>
+<li>📶 <strong>Usage données réseau</strong> : &lt; 5MB/jour par
+utilisateur<br />
+</li>
+<li>🔋 <strong>Consommation batterie</strong> : &lt; 15% sur 8h de
+shift</li>
+</ul>
+<hr />
+<p>Cette application mobile transforme les contraintes des chantiers BTP
+(réseau aléatoire, environnement hostile) en atouts via :<br />
+✅ <strong>Simplicité radicale</strong> : UX optimisée pour une main
+sale/gantée<br />
+✅ <strong>Résilience offline</strong> : Pas de blocage en zone
+isolée<br />
+✅ <strong>Intégration hardware</strong> : Lever le potentiel des
+périphériques industriels</p>
+<blockquote>
+<p>“Un outil qui disparaît au profit de l’action terrain” - Philosophie
+de design</p>
+</blockquote>
+<hr />
+<h2 id="réassignation-express---workflow-ascii"><strong>Réassignation
+Express - Workflow ASCII</strong></h2>
+<h3 id="état-initial"><strong>1. État Initial</strong></h3>
+<pre><code>[ENGIN #P200]  
+Statut: 🔴 PANNE  
+Chauffeur: Jao Dupont  
+Localisation: Chantier Ambatovy  
+
+[CHAUFFEURS DISPONIBLES]  
+1. Mora (✅) - Permis Pelles  
+2. Alice (✅) - Permis Camions  
+3. Robert (🕒) - En congé  </code></pre>
+<h3 id="action-superviseur"><strong>2. Action Superviseur</strong></h3>
+<pre><code>&gt; drag Mora to #P200  
+[SYSTÈME] Vérification compétences...  
+✔ Compétences OK (Pelles niveau 3)  </code></pre>
+<h3 id="notification-chauffeur"><strong>3. Notification
+Chauffeur</strong></h3>
+<pre><code>┌──────────────────────────────────────┐  
+│ 📱 NOTIFICATION (Mora)             │  
+│                                      │  
+│  NOUVELLE MISSION!                   │  
+│                                      │  
+│  Engin: Pelle X200 (#P200)           │  
+│  Client: COLAS Ambatovy              │  
+│  Début: Immédiat                     │  
+│                                      │  
+│  [ACCEPTER]      [DÉTAILS]           │  
+└──────────────────────────────────────┘  </code></pre>
+<h3 id="mise-à-jour-temps-réel"><strong>4. Mise à Jour Temps
+Réel</strong></h3>
+<pre><code>[BASE DE DONNÉES]  
+UPDATE assignments  
+SET driver_id = &#39;Mora_123&#39;  
+WHERE machine_id = &#39;P200&#39;;  
+
+[SYSTÈME] Événement publié :  
+{  
+  &quot;type&quot;: &quot;REASSIGNMENT&quot;,  
+  &quot;machine&quot;: &quot;P200&quot;,  
+  &quot;old_driver&quot;: &quot;Jao_456&quot;,  
+  &quot;new_driver&quot;: &quot;Mora_123&quot;,  
+  &quot;timestamp&quot;: &quot;2024-07-12T14:30:00Z&quot;  
+}  </code></pre>
+<h3 id="nouvel-état"><strong>5. Nouvel État</strong></h3>
+<pre><code>[ENGIN #P200]  
+Statut: 🟢 ACTIF  
+Chauffeur: Mora Leroy  
+Prochaine maintenance: 50h  
+
+[CHAUFFEURS]  
+• Jao Dupont (🔴 Inactif)  
+• Mora Leroy (🟢 Mission #CT-587)  
+• Alice (✅ Disponible)  </code></pre>
+<h3 id="workflow-complet-en-diagramme"><strong>6. Workflow Complet en
+Diagramme</strong></h3>
+<pre><code>  +----------------+       +---------------------+       +---------------+  
+  |  Superviseur   |       |      Système        |       |   Chauffeur   |  
+  |   (Mobile)     |       |                     |       |    Mora     |  
+  +-------+--------+       +---------+-----------+       +-------+-------+  
+          |                         |                           |  
+          | Glisser-déposer         |                           |  
+          | Mora → #P200          |                           |  
+          +------------------------&gt;|                           |  
+          |                         |                           |  
+          |                         | Vérification compétences  |  
+          |                         |--------+                  |  
+          |                         |&lt;-------|                  |  
+          |                         |                           |  
+          |                         | Notification push         |  
+          |                         |--------------------------&gt;|  
+          |                         |                           |  
+          |                         |       [ACCEPTER]          |  
+          |                         |&lt;--------------------------|  
+          |                         |                           |  
+          | Mise à jour interface   | Mise à jour BD            |  
+          |&lt;------------------------+                           |  
+          |                         |                           |  
+          |                         | Début tracking mission    |  
+          |                         |--------------------------&gt;|  
+  +-------+--------+       +---------+-----------+       +-------+-------+  </code></pre>
+<h2 id="points-clés-technique"><strong>Points Clés
+Technique</strong></h2>
+<ol type="1">
+<li><strong>Gestures UX</strong> :
+<ul>
+<li><code>PanResponder</code> (React Native) pour glisser-déposer<br />
+</li>
+<li>Animation : <code>react-native-reanimated</code></li>
+</ul></li>
+<li><strong>Validation Temps Réel</strong> :</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode rust"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">async</span> <span class="kw">fn</span> validate_assignment(machine_id<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span><span class="op">,</span> driver_id<span class="op">:</span> <span class="op">&amp;</span><span class="dt">str</span>) <span class="op">-&gt;</span> <span class="dt">Result</span><span class="op">&lt;</span>()<span class="op">,</span> AssignmentError<span class="op">&gt;</span> <span class="op">{</span>  </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> machine <span class="op">=</span> get_machine(machine_id)<span class="op">.</span><span class="kw">await</span><span class="op">?;</span>  </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> driver <span class="op">=</span> get_driver(driver_id)<span class="op">.</span><span class="kw">await</span><span class="op">?;</span>  </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">!</span>driver<span class="op">.</span>licenses<span class="op">.</span>contains(<span class="op">&amp;</span>machine<span class="op">.</span>required_license) <span class="op">{</span>  </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="cn">Err</span>(<span class="pp">AssignmentError::</span>InvalidLicense)<span class="op">;</span>  </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>  </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> driver<span class="op">.</span>status <span class="op">!=</span> <span class="pp">DriverStatus::</span>Available <span class="op">{</span>  </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="cn">Err</span>(<span class="pp">AssignmentError::</span>NotAvailable)<span class="op">;</span>  </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>  </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="cn">Ok</span>(())  </span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span>  </span></code></pre></div>
+<ol start="3" type="1">
+<li><strong>Synchronisation Offline</strong> :
+<ul>
+<li>Stockage local : SQLite<br />
+</li>
+<li>Reconnaissance conflits : Versionnage optimiste</li>
+</ul></li>
+</ol>
+<p>Ce workflow permet une réassignation en &lt; 15 secondes, crucial
+pour minimiser l’immobilisation des engins sur les chantiers BTP.</p>
+<hr />
+<p>T:</p>
+<p>Nous allons détailler l’aspect mobile de la solution, en se
+concentrant sur les fonctionnalités terrain pour superviseurs et
+employés. L’application mobile sera développée en React Native pour une
+couverture iOS/Android, avec une attention particulière aux contraintes
+du terrain BTP (connexion intermittente, robustesse, simplicité
+d’utilisation).</p>
+<hr />
+<h2 id="fonctionnalités-clés-par-rôle"><strong>Fonctionnalités Clés par
+Rôle</strong></h2>
+<h3 id="pour-les-superviseursmanagers"><strong>1. Pour les
+Superviseurs/Managers</strong></h3>
+<p><strong>a) Dashboard Opérationnel</strong></p>
+<ul>
+<li>Vue synthétique en temps réel :
+<ul>
+<li>Nombre de machines actives/inactives<br />
+</li>
+<li>Alertes critiques (documents expirés, pannes)<br />
+</li>
+<li>Employés disponibles/indisponibles</li>
+</ul></li>
+</ul>
+<p><strong>b) Gestion des Interventions</strong></p>
+<ul>
+<li><p>Création de tâches :</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;TaskForm&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;MachinePicker</span> <span class="fu">/&gt;</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;DriverPicker</span> <span class="fu">/&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">&lt;DateTimePicker</span> <span class="fu">/&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">&lt;/TaskForm&gt;</span></span></code></pre></div></li>
+<li><p>Notification push aux chauffeurs assignés<br />
+</p></li>
+<li><p>Suivi de l’avancement (statut : planifié → en cours →
+terminé)</p></li>
+</ul>
+<p><strong>c) Validation des Pointages</strong></p>
+<ul>
+<li>Liste des employés avec statut (présent/absent)<br />
+</li>
+<li>Justification des absences (saisie rapide)<br />
+</li>
+<li>Export journalier vers le système RH</li>
+</ul>
+<p><strong>d) Inventaire Mobile</strong></p>
+<ul>
+<li>Scan QR Code des machines → accès instantané à :
+<ul>
+<li>Historique maintenance<br />
+</li>
+<li>Heures d’utilisation<br />
+</li>
+<li>Prochain contrôle</li>
+</ul></li>
+</ul>
+<hr />
+<h3 id="pour-les-chauffeursopérateurs"><strong>2. Pour les
+Chauffeurs/Opérateurs</strong></h3>
+<p><strong>a) Planning Personnel</strong><br />
+- Vue quotidienne/hebdomadaire des missions<br />
+- Notifications avant départ (ex: “Mission #587 à 7h30 - Pelle X”)<br />
+<strong>b) Rapport d’Activité</strong><br />
+- Début/fin de mission :<br />
+- Bouton “Démarrer Mission” avec géolocalisation<br />
+- Saisie des heures moteur<br />
+- Remontée d’incidents :<br />
+- Catégorie (mécanique, sécurité…)<br />
+- Photo jointe<br />
+<strong>c) Fiche Machine</strong><br />
+- Accès offline aux :<br />
+- Caractéristiques techniques<br />
+- Procédures d’urgence<br />
+- Contacts maintenance</p>
+<hr />
+<h2 id="design-dinterface-terrain-ux-critères"><strong>Design
+d’Interface Terrain (UX Critères)</strong></h2>
+<h3 id="principes-fondamentaux"><strong>Principes
+Fondamentaux</strong></h3>
+<ul>
+<li><strong>Offline-first</strong> : Cache des données essentielles
+(SQLite)<br />
+</li>
+<li><strong>Robustesse</strong> : Design lisible en plein soleil
+(contraste élevé)<br />
+</li>
+<li><strong>Rapidité</strong> : Actions en &lt; 3 taps</li>
+</ul>
+<h3 id="écrans-types"><strong>Écrans Types</strong></h3>
+<ol type="1">
+<li><strong>Connexion Simplifiée</strong> :
+<ul>
+<li>Identification par badge QR ou PIN<br />
+</li>
+</ul></li>
+<li><strong>Accueil Chauffeur</strong> :</li>
+</ol>
+<pre><code>[Bonjour Jao!]  
+● Mission en cours :  
+  Transport Pelle X → Chantier Ambatovy  
+  Départ: 07:30 - Heures moteur: 4.2h  
+[ ] Signaler incident  
+[ ] Terminer mission  </code></pre>
+<ol start="3" type="1">
+<li><strong>Saisie Incident</strong> :
+<ul>
+<li>Formulaire en 4 étapes :
+<ol type="1">
+<li>Type (liste déroulante)<br />
+</li>
+<li>Description (voix-to-text possible)<br />
+</li>
+<li>Photo/Video<br />
+</li>
+<li>Confirmation</li>
+</ol></li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="techniques-offlinecloud-sync"><strong>Techniques Offline/Cloud
+Sync</strong></h2>
+<p><strong>Architecture de Synchronisation</strong> :</p>
+<figure>
+<img src="" alt="pix here" />
+<figcaption aria-hidden="true">pix here</figcaption>
+</figure>
+<!-- NOTE: rm dash @ cloud--\>>
+```mermaid
+sequenceDiagram
+    App Mobile->>+Cache Local: Écriture données (SQLite)
+    loop Tant que offline
+        App Mobile->>Cache Local: Lecture/Écriture
+    end
+    App Mobile->>Cloud: Sync automatique (WiFi/4G)
+    Cloud--\>>App Mobile: Confirmation + conflits résolus
+```
+-->
+<p><strong>Règles de Conflit</strong> :<br />
+- “Dernière modification gagne” pour les données non critiques<br />
+- Alerte manuelle pour les conflits métier (ex: double réservation)</p>
+<hr />
+<h2 id="sécurité-données-terrain"><strong>Sécurité Données
+Terrain</strong></h2>
+<ol type="1">
+<li><strong>Chiffrement</strong> :
+<ul>
+<li>AES-256 pour la base locale<br />
+</li>
+<li>HTTPS strict pour le cloud<br />
+</li>
+</ul></li>
+<li><strong>Gestion des Sessions</strong> :
+<ul>
+<li>JWT renouvelé toutes les 2h<br />
+</li>
+<li>Revocation immédiate si appareil perdu<br />
+</li>
+</ul></li>
+<li><strong>Permissions</strong> :
+<ul>
+<li>Accès caméra/GPS justifiés<br />
+</li>
+<li>Profilage RBAC (Rôle-Based Access Control)</li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="intégrations-matérielles-1"><strong>Intégrations
+Matérielles</strong></h2>
+<table>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 35%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>Périphérique</strong></th>
+<th><strong>Usage</strong></th>
+<th><strong>Avantage</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scanner QR Code</td>
+<td>Identification machines</td>
+<td>Réduction erreurs saisie</td>
+</tr>
+<tr class="even">
+<td>Montre Connectée</td>
+<td>Notifications opérateurs</td>
+<td>Mains libres sur chantier</td>
+</tr>
+<tr class="odd">
+<td>OBD2 Dongle</td>
+<td>Remontée automatique heures moteur</td>
+<td>Pas de saisie manuelle</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="indicateurs-de-performance"><strong>Indicateurs de
+Performance</strong></h2>
+<ul>
+<li><strong>Temps moyen par tâche</strong> :
+<ul>
+<li>Pointage : &lt; 15 sec<br />
+</li>
+<li>Rapport incident : &lt; 1 min<br />
+</li>
+</ul></li>
+<li><strong>Disponibilité offline</strong> : 48h min<br />
+</li>
+<li><strong>Taux d’erreur saisie</strong> : &lt; 0.1%</li>
+</ul>
+<hr />
+<p>Cette approche mobile transforme les contraintes terrain
+(connectivité, rusticité) en atouts via :</p>
+<p>✅ <strong>Simplicité radicale</strong> : UX optimisé pour gants de
+travail<br />
+✅ <strong>Résilience</strong> : Pas de blocage si réseau absent<br />
+✅ <strong>Intégration hardware</strong> : Lever le potentiel des
+périphériques industriels</p>
+<p>L’application devient un “copilote opérationnel” indispensable sur
+les chantiers, directement lié à la réduction des coûts
+d’exploitation.</p>
+<hr />
+<p>Nous allons représenter le processus de réassignation express en
+utilisant des diagrammes ASCII simples.</p>
+<ol type="1">
+<li><strong>État initial</strong> : Un engin est en panne, le chauffeur
+initial est inactif.</li>
+<li><strong>Recherche des chauffeurs disponibles</strong> : Le système
+identifie les chauffeurs disponibles ayant les compétences
+requises.</li>
+<li><strong>Réassignation</strong> : Le superviseur choisit un chauffeur
+et l’assigne à l’engin.</li>
+<li><strong>Notification</strong> : Le chauffeur reçoit une notification
+sur son mobile.</li>
+</ol>
+<p>Représentation ASCII :</p>
+<pre><code>  +-------------------+        +-------------------+        +-------------------+
+  | Engin en panne    |        | Chauffeurs        |        | Superviseur       |
+  | (Pelle X200)      |        | Disponibles       |        |                   |
+  |                   |        |                   |        |                   |
+  | Statut: ● Rouge   |        | 1. Mora (✓)     |        | [Interface]       |
+  | Chauffeur: -      |        | 2. Alice  (✓)     |        | &quot;Réassigner à...&quot; |
+  |                   |        | 3. Robert (✗)     |        |                   |
+  +--------▲----------+        +--------▲----------+        +--------▲----------+
+           │                            │                            │           
+           │ Signalement                │ Liste                      │ Sélection  
+           │ Incident                   │ filtrée                    │ du chauffeur
+  +--------┴----------+        +--------┴----------+        +--------┴----------+
+  |                   |        |                   |        |                   |
+  | Chauffeur initial |        | Système de        |        | Action:           |
+  | (Jao)            |        | Gestion           |        | Glisser-déposer   |
+  |                   |        |                   |        | Mora → Pelle    |
+  | Statut: Inactif   |        | Match compétences |        | X200              |
+  |                   |        |                   |        |                   |
+  +-------------------+        +-------------------+        +-------------------+
+                       +-----------------------+
+                       | Notification Mobile  |
+                       |                      |
+                       | &quot;Nouvelle mission:   |
+                       |  Pelle X200 à 10h00&quot; |
+                       |                      |
+                       +-----------------------+
+                                  ▲
+                                  │
+                                  │ Envoi push
+                                  │
+                       +-----------------------+
+                       | Chauffeur assigné      |
+                       | (Mora)              |
+                       | Statut: ● En mission   |
+                       +-----------------------+</code></pre>
+<p>Étapes détaillées :</p>
+<ol type="1">
+<li>Le chauffeur initial (Jao) signale une panne via l’app mobile.
+L’engin passe en statut “rouge”.</li>
+<li>Le système identifie les chauffeurs disponibles ayant le permis pour
+les pelles.</li>
+<li>Le superviseur voit l’engin en panne et la liste des chauffeurs
+disponibles sur son interface.</li>
+<li>Il glisse-dépose le chauffeur “Mora” sur l’engin “Pelle X200”.</li>
+<li>Mora reçoit une notification immédiate sur son mobile avec les
+détails de la mission.</li>
+<li>Mora confirme et son statut passe à “En mission”.</li>
+</ol>
+<p>Ce flux permet une réassignation en moins de 2 minutes, minimisant
+l’immobilisation de l’engin.</p>
+</main>
+</body>
+</html>
