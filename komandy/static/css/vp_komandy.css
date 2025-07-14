@@ -81,11 +81,6 @@ body {
   min-height: 100vh;
 }
 
-body {
-    background: var(--color-bg);
-    padding: 2rem;
-}
-
 .focus {
     max-width: var(--width-content);
     margin: 0 auto;
