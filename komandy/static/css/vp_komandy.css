@@ -359,7 +359,13 @@ thead tr:hover td { background: transparent; }
   transform: translateX(5px);
 }
 
-/* Definition List */
+/*
+USAGE:
++ I'm visible: show hidden on hover 
+: Hide me.
+: Hide me too.
+
+*/
 dl { padding: 0; margin: 0; }
 dd { font-size: small; }
 dl dd:last-of-type { display: none; }
