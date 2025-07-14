@@ -273,8 +273,11 @@ nav ul li ul li a {
   color: #fff;
   width: 100%;
   max-width: 100%;
-  padding: 3rem 0 2rem;
+  padding: 3rem 0 2.5rem;
   position: relative;
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;     /* Vertical centering */
 }
 
 .author { display: none; }
