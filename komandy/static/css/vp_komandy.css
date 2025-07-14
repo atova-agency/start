@@ -448,3 +448,17 @@ dl:hover dd:last-of-type { display: block; }
   .cta-buttons { flex-direction: column; }
 }
 
+/* SVG Responsive Fix */
+figure {
+  display: block;
+  margin: 1rem 0;
+  width: 100%;
+  text-align: center;
+}
+
+figure svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
