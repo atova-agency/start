@@ -285,7 +285,8 @@ nav ul li ul li a {
 }
 
 #TOC:before {
-  content: url("https://lerina.github.io/logo_lerina_96x96.png");
+  content: url("./logo.svg");
+/*  content: url("https://lerina.github.io/logo_lerina_96x96.png");*/
   margin-left: 3rem;
   padding-top: 0.5rem;
 }
