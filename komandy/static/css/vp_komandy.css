@@ -138,6 +138,22 @@ a:hover {
   padding: 0 1rem;
 }
 
+.focus {
+    max-width: var(--width-content);
+    margin: 0 auto;
+    background: rgba(42, 42, 42, 0.5);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--box-shadow) var(--color-shadow);
+}
+.desc {
+    background: rgba(179, 147, 123, 0.1);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--color-accent);
+}
+
 footer, header, main {
   margin: 0 auto;
   max-width: var(--width-content);
