@@ -296,6 +296,8 @@ nav ul li ul li a {
   margin-left: -1.5rem;
 }
 
+#TOC {  justify-content: left;}
+
 #title-block-header {
   background: url("./bg-header.svg") center/cover no-repeat;
   color: #fff;
