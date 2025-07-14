@@ -36,6 +36,7 @@
   }
 }
 
+
 /* Base Styles */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -333,6 +334,40 @@ code {
 }
 
 .sourceCode {background-color: transparent !important;}
+
+
+/* Enhanced Syntax Highlighting for Dark Theme */
+code span.al { color: #ff6b6b !important; font-weight: bold !important; } /* Brighter red */
+code span.an { color: #4db5bd !important; } /* Cyan */
+code span.at { color: #9ccc65 !important; } /* Light green */
+code span.bn { color: #bd93f9 !important; } /* Purple */
+code span.bu { color: #8be9fd !important; } /* Light blue */
+code span.cf { color: #ff79c6 !important; font-weight: bold !important; } /* Pink */
+code span.ch { color: #f1fa8c !important; } /* Yellow */
+code span.cn { color: #bd93f9 !important; } /* Purple */
+code span.co { color: #a9b7c6 !important; font-style: italic !important; } /* Light gray */
+code span.cv { color: #a9b7c6 !important; font-weight: bold !important; font-style: italic !important; } /* Light gray */
+code span.do { color: #ffb86c !important; } /* Orange */
+code span.dt { color: #ff79c6 !important; } /* Pink */
+code span.dv { color: #bd93f9 !important; } /* Purple */
+code span.er { color: #ff5555 !important; font-weight: bold !important; } /* Bright red */
+code span.ex { color: #50fa7b !important; } /* Green */
+code span.fl { color: #bd93f9 !important; } /* Purple */
+code span.fu { color: #50fa7b !important; } /* Green */
+code span.im { color: #ffb86c !important; font-weight: bold !important; } /* Orange */
+code span.in { color: #a9b7c6 !important; font-weight: bold !important; font-style: italic !important; } /* Light gray */
+code span.kw { color: #ff79c6 !important; font-weight: bold !important; } /* Pink */
+code span.op { color: #f8f8f2 !important; } /* White */
+code span.ot { color: #f0fa7b !important; } /* Green */
+code span.pp { color: #ffb86c !important; } /* Orange */
+code span.sc { color: #f1fa8c !important; } /* Yellow */
+code span.ss { color: #f1fa8c !important; } /* Yellow */
+code span.st { color: #f1fa8c !important; } /* Yellow */
+code span.va { color: #f8f8f2 !important; } /* White */
+code span.vs { color: #f1fa8c !important; } /* Yellow */
+code span.wa { color: #ffb86c !important; font-weight: bold !important; font-style: italic !important; } /* Orange */
+
+
 
 /* Tables */
 table {
