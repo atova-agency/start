@@ -58,6 +58,12 @@
   border-radius: 10px;
 }
 
+.box_blue {background: rgba(10, 58, 117, 0.2); border: 1px solid var(--color-accent);}
+.box_yellow {background: rgba(245, 158, 11, 0.1); border: 1px solid var(--color-warning);}
+.box_green {background: rgba(16, 185, 129, 0.1); border: 1px solid var(--color-success);}
+.box_red { background: linear-gradient(145deg, #b42930, #502205);border: 1px solid var(--color-accent);}
+.with_shadow { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);}
+
 html {
   scroll-behavior: smooth;
   background: var(--color-bg);
@@ -222,12 +228,36 @@ button:hover, .btn:hover {
 
 .btn-outline {
   background: transparent;
+  border: 1px solid var(--color-accent);
+  transition: all 0.2s ease;
+}
+.btn-outline:hover {
+  background-color: rgba(179, 147, 123, 0.1);
+  transform: translateY(-2px);
+}
+
+/*
+.btn-outline {
+  background: transparent;
   color: var(--color-accent);
 }
 
 .btn-outline:hover {
   background: rgba(179, 147, 123, 0.1);
   color: var(--color-accent);
+}
+*/
+
+.btn-primary {
+  background: linear-gradient(145deg, #05225003, #57534e);
+  transition: all 0.2s ease;
+  border: 1px solid var(--color-accent);
+}
+.btn-primary:hover {
+  background-color: #343434;
+  transform: translateY(-2px);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Navigation */
