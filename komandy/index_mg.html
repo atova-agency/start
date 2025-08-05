@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mg">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kômandy - Empowering Builders & Construction Teams</title>
+    <title>Kômandy - Fanomezana hery ny mpanao trano sy ny ekipa fanorenana</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="icon" href="./static/img/favicon.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Ny fomba CSS rehetra dia voatahiry tsy miova */
         @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap');
         
         body {
             font-family: 'Barlow', sans-serif;
             background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
         
         .construction-pattern {
@@ -50,11 +52,137 @@
         .nav-link:hover::after {
             width: 100%;
         }
+        
+        /* Mobile Menu Animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        
+        .mobile-menu.active {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in;
+        }
+        
+        /* Language Selector Styles */
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .lang-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1f2937;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            right: 0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .lang-dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        
+        .lang-dropdown-content a:hover {
+            background-color: #374151;
+        }
+        
+        .lang-dropdown:hover .lang-dropdown-content {
+            display: block;
+        }
+        
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .lang-flag {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        /* Mobile language selector */
+        .mobile-lang-selector {
+            display: none;
+            position: relative;
+        }
+        
+        .mobile-lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #1f2937;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+            display: none;
+        }
+        
+        .mobile-lang-dropdown.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-lang-selector {
+                display: none;
+            }
+            
+            .mobile-lang-selector {
+                display: block;
+            }
+        }
+        
+        /* Hamburger animation */
+        .hamburger div {
+            width: 24px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active div:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active div:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        
+        /* Smooth animations */
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="min-h-screen">
     <!-- Header/Navigation -->
-    <header class="bg-gray-900 text-white sticky top-0 z-50 shadow-xl">
+    <header class="bg-gray-900 text-white sticky top-0 z-50 shadow-xl relative">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
                 <div class="bg-yellow-500 text-gray-900 font-bold text-xl px-3 py-2 rounded">Kômandy</div>
@@ -62,18 +190,78 @@
             </div>
             
             <nav class="hidden md:flex space-x-8">
-                <a href="#products" class="nav-link font-medium hover:text-yellow-400">Products</a>
-                <a href="#modules" class="nav-link font-medium hover:text-yellow-400">Modules</a>
-                <a href="#features" class="nav-link font-medium hover:text-yellow-400">Features</a>
-                <a href="#contact" class="nav-link font-medium hover:text-yellow-400">Contact</a>
+                <a href="#products" class="nav-link font-medium hover:text-yellow-400">Vokatra</a>
+                <a href="#modules" class="nav-link font-medium hover:text-yellow-400">Singa</a>
+                <a href="#features" class="nav-link font-medium hover:text-yellow-400">Fampisehoana</a>
+                <a href="#contact" class="nav-link font-medium hover:text-yellow-400">Fifandraisana</a>
             </nav>
             
             <div class="flex items-center space-x-4">
-                <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold px-4 py-2 rounded-md transition duration-300">
-                    Get Started
+                <!-- Desktop Language Selector -->
+                <div class="desktop-lang-selector lang-dropdown">
+                    <button class="bg-gray-800 hover:bg-gray-700 text-white font-medium px-4 py-2 rounded-md flex items-center gap-2 transition duration-300">
+                        <span class="lang-flag">🇲🇬</span>
+                        <span>Malagasy</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="lang-dropdown-content">
+                        <a href="index.html" class="lang-option">
+                            <span class="lang-flag">🇺🇸</span>
+                            <span>English</span>
+                        </a>
+                        <a href="index_fr.html" class="lang-option">
+                            <span class="lang-flag">🇫🇷</span>
+                            <span>Français</span>
+                        </a>
+                        <a href="index_mg.html" class="lang-option">
+                            <span class="lang-flag">🇲🇬</span>
+                            <span>Malagasy</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold px-4 py-2 rounded-md transition duration-300 hidden md:block">
+                    Manomboka
                 </button>
-                <button class="md:hidden text-white">
-                    <i class="fas fa-bars text-xl"></i>
+                
+                <!-- Mobile Language Selector -->
+                <div class="mobile-lang-selector">
+                    <button id="lang-toggle" class="text-white p-2 rounded-full hover:bg-gray-800 transition-colors">
+                        <i class="fas fa-globe text-xl"></i>
+                    </button>
+                    <div id="mobile-lang-dropdown" class="mobile-lang-dropdown">
+                        <a href="index.html" class="lang-option">
+                            <span class="lang-flag">🇺🇸</span>
+                            <span>English</span>
+                        </a>
+                        <a href="index_fr.html" class="lang-option">
+                            <span class="lang-flag">🇫🇷</span>
+                            <span>Français</span>
+                        </a>
+                        <a href="index_mg.html" class="lang-option">
+                            <span class="lang-flag">🇲🇬</span>
+                            <span>Malagasy</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <button id="menu-toggle" class="md:hidden text-white hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu bg-gray-800 md:hidden absolute top-full left-0 w-full shadow-lg">
+            <div class="container mx-auto px-4 py-6 flex flex-col space-y-4">
+                <a href="#products" class="text-white hover:text-yellow-400 py-2 border-b border-gray-700">Vokatra</a>
+                <a href="#modules" class="text-white hover:text-yellow-400 py-2 border-b border-gray-700">Singa</a>
+                <a href="#features" class="text-white hover:text-yellow-400 py-2 border-b border-gray-700">Fampisehoana</a>
+                <a href="#contact" class="text-white hover:text-yellow-400 py-2 border-b border-gray-700">Fifandraisana</a>
+                <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold px-4 py-2 rounded-md transition duration-300 w-full mt-4">
+                    Manomboka
                 </button>
             </div>
         </div>
@@ -84,18 +272,18 @@
         <div class="container mx-auto px-4 py-20 md:py-28 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-12 md:mb-0">
                 <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                    <span class="block">Empowering Builders,</span>
-                    <span class="block text-yellow-600">Workers & Dreamers</span>
+                    <span class="block">Fanomezana hery izay manorina, ireo miasa</span>
+                    <span class="block text-yellow-600">& ireo manana vina</span>
                 </h1>
                 <p class="text-lg text-gray-700 mb-8 max-w-xl">
-                    Kômandy provides the digital tools construction teams need to build efficiently, work productively, and achieve ambitious goals. Our suite of products is designed for the realities of construction work.
+                    Kômandy manome fitaovana nomerika ilain'ny ekipa fanorenana mba hanorenana tsara, hiasa mahomby ary hanatratra tanjona lehibe. Ny vokatra atolotray dia natao ho an'ny zava-misy amin'ny asa fanorenana.
                 </p>
                 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                     <button class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-8 py-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
-                        Explore Products
+                        Hahita vokatra
                     </button>
                     <button class="border-2 border-gray-800 hover:bg-gray-800 hover:text-white text-gray-900 font-bold px-8 py-4 rounded-lg transition duration-300">
-                        Schedule Demo
+                        Fandaharam-pisehoana
                     </button>
                 </div>
             </div>
@@ -108,22 +296,22 @@
                             <div class="bg-gray-800 text-white p-4 rounded-lg">
                                 <i class="fas fa-hard-hat text-yellow-400 text-2xl mb-2"></i>
                                 <h3 class="font-bold">kOperations</h3>
-                                <p class="text-sm">Field and on-site solutions</p>
+                                <p class="text-sm">Vahaolana an-tsaha sy toeram-piasana</p>
                             </div>
                             <div class="bg-yellow-500 text-gray-900 p-4 rounded-lg">
                                 <i class="fas fa-desktop text-gray-800 text-2xl mb-2"></i>
                                 <h3 class="font-bold">kLogistics</h3>
-                                <p class="text-sm">Desktop/web administration</p>
+                                <p class="text-sm">Fitantanana birao/web</p>
                             </div>
                             <div class="bg-gray-100 p-4 rounded-lg border border-gray-300">
                                 <i class="fas fa-truck text-yellow-500 text-2xl mb-2"></i>
                                 <h3 class="font-bold">kFleet</h3>
-                                <p class="text-sm">Vehicle & machinery management</p>
+                                <p class="text-sm">Fitantanana fiara sy milina</p>
                             </div>
                             <div class="bg-gray-100 p-4 rounded-lg border border-gray-300">
-                                <i class="fas fa-bolt text-yellow-500 text-2xl mb-2"></i>
-                                <h3 class="font-bold">kPower</h3>
-                                <p class="text-sm">Generator rental & maintenance</p>
+                                <i class="fas fa-clock text-yellow-500 text-2xl mb-2"></i>
+                                <h3 class="font-bold">kMono</h3>
+                                <p class="text-sm">Rafitra asa tokana manokana</p><a href="https://k-task-pg4j.shuttle.app/" target="_blank"><span class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-2 py-1 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">Andramo aho</span></a>
                             </div>
                         </div>
                     </div>
@@ -136,13 +324,13 @@
     <section class="bg-gray-900 text-white py-16">
         <div class="container mx-auto px-4 text-center max-w-4xl">
             <div class="inline-block bg-yellow-500 text-gray-900 px-4 py-1 rounded-full mb-6 font-bold">
-                Our Mission
+                Ny iraka sy tanjona
             </div>
             <h2 class="text-3xl md:text-4xl font-bold mb-8">
-                Helping Builders Build, Workers Work, and Dreamers Achieve
+                Manampy ny mpanao trano hanorina, ny mpiasa hiasa, ary ny mpandresy hahatratra ny zava-tendreny
             </h2>
             <p class="text-xl text-gray-300 leading-relaxed">
-                Kômandy develops mobile applications accessible in the field or offline, paired with powerful web and desktop dashboards for administrators. Our tools bridge the gap between office planning and on-site execution.
+                Kômandy mamolavola rindranasa finday azo idirana an-tsaha na tsy misy internet, miaraka amin'ny dashboard web sy solosaina mahery ho an'ny mpitantana. Ny fitaovanay dia mampifandray ny fandaminana ao amin'ny birao sy ny fampiharana an-tsaha.
             </p>
         </div>
     </section>
@@ -151,8 +339,8 @@
     <section id="products" class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Product Suite</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Specialized solutions for every aspect of construction management</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ny Vokatra Asehonay</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Vahaolana manokana ho an'ny lafiny rehetra amin'ny fitantanana fanorenana</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -162,7 +350,7 @@
                         <i class="fas fa-truck"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">kFleet</h3>
-                    <p class="text-gray-600 mb-4">Rental and maintenance management for vehicles, engines, and machinery with parts inventory.</p>
+                    <p class="text-gray-600 mb-4">Fitantanana fanofana sy fikojakojana fiara, motera ary milina miaraka amin'ny lisitry ny ampahany.</p>
                     <div class="flex">
                         <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">kLogistics</span>
                         <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded ml-2">kOperations</span>
@@ -175,7 +363,7 @@
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">kPower</h3>
-                    <p class="text-gray-600 mb-4">Rental management and maintenance of power generators for construction sites.</p>
+                    <p class="text-gray-600 mb-4">Fitantanana fanofana sy fikojakojana ny mpamokatra herinaratra ho an'ny toeram-panorenana.</p>
                     <div class="flex">
                         <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">kLogistics</span>
                         <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded ml-2">kOperations</span>
@@ -188,7 +376,7 @@
                         <i class="fas fa-hard-hat"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">kBuildyard</h3>
-                    <p class="text-gray-600 mb-4">Construction site management by location, task, work team, timekeeping and parts inventory.</p>
+                    <p class="text-gray-600 mb-4">Fitantanana toeram-panorenana araka ny toerana, asa, ekipa miasa, famantaranandro ary lisitry ny ampahany.</p>
                     <div class="flex">
                         <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">kOperations</span>
                     </div>
@@ -199,8 +387,8 @@
                     <div class="text-yellow-500 text-3xl mb-4">
                         <i class="fas fa-video"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">kZoky_B</h3>
-                    <p class="text-gray-600 mb-4">Site monitoring, equipment warehouse monitoring, and restricted access areas surveillance.</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">kZoky_Be</h3>
+                    <p class="text-gray-600 mb-4">Fandinihana toeram-piasana, fandinihana trano fitehirizana fitaovana, ary fandinihana faritra tsy azo idirana.</p>
                     <div class="flex">
                         <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">kOperations</span>
                     </div>
@@ -212,7 +400,7 @@
                         <i class="fas fa-clock"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">kTimeTrack</h3>
-                    <p class="text-gray-600 mb-4">Time punch-in and monitoring of worker attendance, leave requests, presence and availability.</p>
+                    <p class="text-gray-600 mb-4">Famantaranandro sy fanaraha-maso ny fisian'ny mpiasa, fangatahana fialan-tsasatra, fisiana sy fahafahana.</p>
                     <div class="flex">
                         <span class="bg-gray-200 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded">kOperations</span>
                     </div>
@@ -223,8 +411,8 @@
                     <div class="text-gray-400 text-3xl mb-4">
                         <i class="fas fa-plus-circle"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-400 mb-2">More Solutions</h3>
-                    <p class="text-gray-500 text-center">We're constantly developing new tools to help construction teams succeed.</p>
+                    <h3 class="text-xl font-bold text-gray-400 mb-2">Vahaolana hafa</h3>
+                    <p class="text-gray-500 text-center">Mamorona fitaovana vaovao foana izahay mba hanampiana ny ekipa fanorenana handresy.</p>
                 </div>
             </div>
         </div>
@@ -234,8 +422,8 @@
     <section id="modules" class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Modules</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">The foundation of our product ecosystem</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ny Singa Fototra</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Fototry ny rafitra vokatra</p>
             </div>
             
             <div class="flex flex-col lg:flex-row gap-12 items-center">
@@ -245,7 +433,7 @@
                         <h3 class="text-2xl font-bold flex items-center">
                             <i class="fas fa-desktop mr-3"></i> kLogistics
                         </h3>
-                        <p class="mt-2">Desktop/web-oriented modules for administrators and office staff</p>
+                        <p class="mt-2">Singa birao/web ho an'ny mpitantana sy ny mpiasa birao</p>
                     </div>
                     <div class="p-6">
                         <ul class="space-y-4">
@@ -255,7 +443,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg">kInventory</h4>
-                                    <p class="text-gray-600">Comprehensive inventory management system</p>
+                                    <p class="text-gray-600">Rafitra fitantanana ny tahiry feno</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
@@ -264,7 +452,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg">kDeploy</h4>
-                                    <p class="text-gray-600">Rental management, delivery, and distribution</p>
+                                    <p class="text-gray-600">Fitantanana fanofana, fanaterana ary fizarana</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
@@ -273,7 +461,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg">kProcurement</h4>
-                                    <p class="text-gray-600">Purchase management and inventory renewal</p>
+                                    <p class="text-gray-600">Fitantanana fividianana sy fanavaozana tahiry</p>
                                 </div>
                             </li>
                         </ul>
@@ -286,7 +474,7 @@
                         <h3 class="text-2xl font-bold flex items-center">
                             <i class="fas fa-hard-hat mr-3"></i> kOperations
                         </h3>
-                        <p class="mt-2">Field modules available on-site for workers and supervisors</p>
+                        <p class="mt-2">Singa an-tsaha azo ampiasaina toeram-piasana ho an'ny mpiasa sy mpanara-maso</p>
                     </div>
                     <div class="p-6">
                         <ul class="space-y-4">
@@ -296,7 +484,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg">kMonitor</h4>
-                                    <p class="text-gray-600">Monitoring and tracking work progress and projects</p>
+                                    <p class="text-gray-600">Fandinihana sy fanarahana ny fandrosoan'ny asa sy tetikasa</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
@@ -305,18 +493,18 @@
                                 </div>
                                 <div>
                                     <h4 class="font-bold text-lg">kUnit</h4>
-                                    <p class="text-gray-600">Organization of work teams and task assignments</p>
+                                    <p class="text-gray-600">Fandrindrana ny ekipa miasa sy ny fizarana asa</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
                                 <div class="bg-gray-200 p-2 rounded-full mr-4">
-                                    <i class="fas fa-user-check text-gray-800"></i>
+                                    <i class="fas fa-mobile-alt text-gray-800"></i>
                                 </div>
                                 <div>
-                                    <h4 class="font-bold text-lg">kTimeTrack</h4>
-                                    <p class="text-gray-600">Worker attendance, punctuality, and availability</p>
+                                    <h4 class="font-bold text-lg"></h4>
+                                    <p class="text-gray-600">Rindranasa finday natao hiasa na dia tsy misy fifandraisana internet, manatsara ny fiasa an-tsaha.</p>
                                 </div>
-                            </li>
+                            </li> 
                         </ul>
                     </div>
                 </div>
@@ -328,8 +516,8 @@
     <section id="features" class="py-20 bg-gray-900 text-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Built for Construction Realities</h2>
-                <p class="text-gray-300 max-w-2xl mx-auto">Features designed specifically for construction environments</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Natao ho an'ny zava-misy amin'ny fanorenana</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Fampisehoana natao manokana ho an'ny tontolon'ny fanorenana</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -337,32 +525,32 @@
                     <div class="text-yellow-500 text-4xl mb-4">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Mobile & Offline Access</h3>
-                    <p class="text-gray-300">Access critical information even without internet connectivity on site</p>
+                    <h3 class="text-xl font-bold mb-2">Fidirana finday & tsy misy internet</h3>
+                    <p class="text-gray-300">Mahazo vaovao zava-dehibe na dia tsy misy fifandraisana internet an-tsaha</p>
                 </div>
                 
                 <div class="bg-gray-800 rounded-xl p-6 text-center">
                     <div class="text-yellow-500 text-4xl mb-4">
                         <i class="fas fa-sync-alt"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Real-time Sync</h3>
-                    <p class="text-gray-300">Field data instantly updates office dashboards when connection is restored</p>
+                    <h3 class="text-xl font-bold mb-2">Fifanarahana amin'ny fotoana tena</h3>
+                    <p class="text-gray-300">Ny angon-drakitra an-tsaha dia mampivatra ny dashboard birao avy hatrany rehefa miverina ny fifandraisana</p>
                 </div>
                 
                 <div class="bg-gray-800 rounded-xl p-6 text-center">
                     <div class="text-yellow-500 text-4xl mb-4">
                         <i class="fas fa-clipboard-check"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Task Management</h3>
-                    <p class="text-gray-300">Assign, track, and complete tasks with team accountability</p>
+                    <h3 class="text-xl font-bold mb-2">Fitantanana asa</h3>
+                    <p class="text-gray-300">Zarao, araho ary atao ny asa amin'ny tompon'andraikitra ekipa</p>
                 </div>
                 
                 <div class="bg-gray-800 rounded-xl p-6 text-center">
                     <div class="text-yellow-500 text-4xl mb-4">
                         <i class="fas fa-chart-pie"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Analytics & Reporting</h3>
-                    <p class="text-gray-300">Powerful insights into productivity, costs, and project progress</p>
+                    <h3 class="text-xl font-bold mb-2">Fandinihana & tatitra</h3>
+                    <p class="text-gray-300">Fahitana mahery momba ny fahombiazana, ny vidiny ary ny fandrosoan'ny tetikasa</p>
                 </div>
             </div>
         </div>
@@ -371,14 +559,14 @@
     <!-- CTA Section -->
     <section class="py-20 bg-gradient-to-r from-yellow-500 to-yellow-600">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Ready to Transform Your Construction Operations?</h2>
-            <p class="text-gray-900 text-xl max-w-2xl mx-auto mb-10">Join thousands of construction professionals using Kômandy to streamline their workflows and improve productivity.</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Vonona hanova ny fiasan'ny fanorenanao?</h2>
+            <p class="text-gray-900 text-xl max-w-2xl mx-auto mb-10">Miaraha amina arivo arivon'ny matihanina amin'ny fanorenana mampiasa Kômandy hanatsarana ny fiasany sy hampitombo ny fahombiazany.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <button class="bg-gray-900 hover:bg-gray-800 text-white font-bold px-8 py-4 rounded-lg shadow-lg transition duration-300">
-                    Request a Demo
+                    Mangataha fampisehoana
                 </button>
                 <button class="bg-white hover:bg-gray-100 text-gray-900 font-bold px-8 py-4 rounded-lg shadow-lg transition duration-300">
-                    Contact Sales
+                    Mifandraisa amin'ny fivarotana
                 </button>
             </div>
         </div>
@@ -390,7 +578,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
                 <div>
                     <div class="text-2xl font-bold mb-4">Kômandy</div>
-                    <p class="text-gray-400 mb-4">Building the future of construction management through innovative digital solutions.</p>
+                    <p class="text-gray-400 mb-4">Manorina ny hoavin'ny fitantanana fanorenana amin'ny alalan'ny vahaolana nomerika vaovao.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-twitter"></i></a>
@@ -400,7 +588,7 @@
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-bold mb-4">Products</h3>
+                    <h3 class="text-lg font-bold mb-4">Vokatra</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-400 hover:text-yellow-500">kFleet</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-yellow-500">kPower</a></li>
@@ -411,7 +599,7 @@
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-bold mb-4">Modules</h3>
+                    <h3 class="text-lg font-bold mb-4">Singa</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-400 hover:text-yellow-500">kLogistics</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-yellow-500">- kInventory</a></li>
@@ -424,7 +612,7 @@
                 </div>
                 
                 <div>
-                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <h3 class="text-lg font-bold mb-4">Mifandraisa aminay</h3>
                     <ul class="space-y-3 text-gray-400">
                         <li class="flex items-start">
                             <i class="fas fa-map-marker-alt mt-1 mr-3 text-yellow-500"></i>
@@ -443,12 +631,49 @@
             </div>
             
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-                <p>&copy; 2025 Atova Software Agency. All rights reserved.</p>
+                <p>&copy; 2025 Atova Software Agency. Zo rehetra voatokana.</p>
             </div>
         </div>
     </footer>
     
     <script>
+        // Ny JavaScript rehetra dia voatahiry tsy miova
+        // Mobile menu functionality
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            // Close language dropdown if open
+            mobileLangDropdown.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking on links
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+        
+        // Language selector functionality
+        const langToggle = document.getElementById('lang-toggle');
+        const mobileLangDropdown = document.getElementById('mobile-lang-dropdown');
+        
+        langToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mobileLangDropdown.classList.toggle('active');
+        });
+        
+        // Close language dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileLangDropdown.contains(e.target) && !langToggle.contains(e.target)) {
+                mobileLangDropdown.classList.remove('active');
+            }
+        });
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -471,6 +696,13 @@
         document.querySelectorAll('.card-hover').forEach(card => {
             observer.observe(card);
         });
+        
+        // Language selection function
+        function selectLanguage(lang) {
+            // This would normally redirect to the appropriate language page
+            // For this demo, we'll just show an alert
+            alert(`Niova fiteny ho ${lang}. Amin'ny fampiasana azy, dia hampiasa ny dikan-teny ${lang} amin'ny tranokalà.`);
+        }
     </script>
 </body>
 </html>
