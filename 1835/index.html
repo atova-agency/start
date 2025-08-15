@@ -3,123 +3,568 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commemorating Queen Ranavalona I of Madagascar</title>
+    <title>Queen Ranavalona I - Wisdom of Sovereignty</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #8e1b1b;
             --secondary: #d4af37;
             --light: #f5f0e1;
             --dark: #1a120b;
+            --accent: #4a752c;
+            --french-blue: #0055a4;
+            --french-red: #ef4135;
+            --malagasy-green: #2e7d32;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Merriweather', serif;
+            line-height: 1.7;
             color: var(--dark);
             background: linear-gradient(135deg, #f9f7f0 0%, #e8e1d1 100%);
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            min-height: 100vh;
         }
         header {
             text-align: center;
             padding: 2rem 0;
-            border-bottom: 3px solid var(--secondary);
-            margin-bottom: 2rem;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23d4af37" stroke-width="2" opacity="0.2"/></svg>');
+            margin-bottom: 1rem;
+            position: relative;
         }
         h1 {
+            font-family: 'Playfair Display', serif;
             color: var(--primary);
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
             margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
         .subtitle {
-            font-size: 1.2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
             color: var(--secondary);
             letter-spacing: 3px;
+            font-weight: 500;
+            margin-top: 10px;
         }
         .date {
             font-size: 1.5rem;
             margin: 1rem 0;
             color: var(--primary);
+            font-weight: 500;
         }
-        section {
-            background: rgba(255, 255, 255, 0.85);
+        .quote-banner {
+            background: linear-gradient(rgba(142, 27, 27, 0.9), rgba(107, 20, 20, 0.9));
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 3px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        .quote-banner:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 Q40,5 60,20 T100,20" fill="none" stroke="%23d4af37" stroke-width="0.5" opacity="0.3"/><path d="M0,80 Q20,65 40,80 T80,80" fill="none" stroke="%23d4af37" stroke-width="0.5" opacity="0.3"/></svg>');
+            opacity: 0.2;
+        }
+        .iconic-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            line-height: 1.4;
+            color: #f5f0e1;
+            font-weight: bold;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        .iconic-quote .line1 {
+            display: block;
+            font-size: 2.7rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        .iconic-quote .line2 {
+            display: block;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        .quote-author {
+            margin-top: 25px;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .wisdom-section {
+            background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: 3px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        .wisdom-section:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><path d="M20,20 Q50,10 80,20 T120,20" fill="none" stroke="%23d4af37" stroke-width="1" opacity="0.2"/><path d="M0,100 Q30,90 60,100 T120,100" fill="none" stroke="%23d4af37" stroke-width="1" opacity="0.2"/></svg>');
+            opacity: 0.15;
+        }
+        .wisdom-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+        .wisdom-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .wisdom-card {
+            background: rgba(255, 255, 255, 0.92);
             border-radius: 10px;
             padding: 25px;
-            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 2px solid var(--secondary);
+            transition: transform 0.3s ease;
+        }
+        .wisdom-card:hover {
+            transform: translateY(-5px);
+        }
+        .wisdom-card.mahasoa {
+            border-top: 5px solid #4CAF50;
+        }
+        .wisdom-card.mandrosoa {
+            border-top: 5px solid #8BC34A;
+        }
+        .wisdom-card.mahamono {
+            border-top: 5px solid #F44336;
+        }
+        .wisdom-card.modia {
+            border-top: 5px solid #FF9800;
+        }
+        .wisdom-term {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .wisdom-term.malagasy {
+            color: var(--malagasy-green);
+            font-size: 2.2rem;
+        }
+        .wisdom-meaning {
+            font-size: 1.1rem;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        .wisdom-translation {
+            font-size: 2.0rem;
+            color: #f5f0e1;
+            margin-top: 30px;
+            font-style: italic;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        .wisdom-context {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #e8e1d1;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+            font-style: italic;
+        }
+        
+        section {
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px 0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             border: 1px solid rgba(142, 27, 27, 0.1);
         }
         h2 {
+            font-family: 'Playfair Display', serif;
             color: var(--primary);
             border-bottom: 2px solid var(--secondary);
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            position: relative;
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+        h2:after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: var(--accent);
+        }
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
         .proclamation {
-            font-family: 'Georgia', serif;
+            font-family: 'Merriweather', serif;
             font-size: 1.1rem;
             line-height: 1.8;
             background: #fff9e6;
-            padding: 20px;
+            padding: 25px;
             border-left: 4px solid var(--secondary);
             white-space: pre-wrap;
+            display: none;
+        }
+        .proclamation.active {
+            display: block;
         }
         .signature {
             text-align: right;
             font-style: italic;
             font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 1rem;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
             color: var(--primary);
         }
         .observations li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 3px solid var(--accent);
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
         .historical-context {
             font-style: italic;
             background: #f8f4e9;
-            padding: 15px;
-            border-radius: 5px;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin: 25px 0;
+            font-size: 1.1rem;
         }
         footer {
             text-align: center;
-            margin-top: 2rem;
-            padding: 1rem;
+            margin-top: 3rem;
+            padding: 2.5rem 1rem;
             color: var(--primary);
-            font-size: 0.9rem;
+            font-size: 1.1rem;
+            border-top: 3px solid var(--secondary);
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        .proclamation-tabs {
+            display: flex;
+            margin-bottom: -1px;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        .tab-btn {
+            padding: 14px 25px;
+            background: #e8e1d1;
+            border: 1px solid rgba(142, 27, 27, 0.1);
+            border-bottom: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-family: 'Merriweather', serif;
+        }
+        .tab-btn.active {
+            background: #fff9e6;
+            color: var(--primary);
+            position: relative;
+            z-index: 10;
+            transform: translateY(1px);
+        }
+        .tab-btn:hover {
+            background: #d4c7a7;
+        }
+        .tab-btn.malagasy.active {
+            color: var(--primary);
+            border-bottom: 4px solid var(--primary);
+        }
+        .tab-btn.english.active {
+            color: var(--accent);
+            border-bottom: 4px solid var(--accent);
+        }
+        .tab-btn.french.active {
+            color: var(--french-blue);
+            border-bottom: 4px solid var(--french-blue);
+        }
+        .french-text {
+            border-left: 4px solid var(--french-blue);
+        }
+        .english-text {
+            border-left: 4px solid var(--accent);
+        }
+        .malagasy-text {
+            border-left: 4px solid var(--primary);
+        }
+        .correction-note {
+            background: rgba(74, 117, 44, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            font-size: 1.1rem;
+            border-left: 4px solid var(--accent);
+        }
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            position: relative;
+        }
+        .timeline:before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--secondary);
+            z-index: 1;
+        }
+        .timeline-item {
+            text-align: center;
+            width: 30%;
+            position: relative;
+            z-index: 2;
+        }
+        .timeline-year {
+            background: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-weight: bold;
+            font-size: 1.4rem;
+            border: 4px solid var(--secondary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid rgba(142, 27, 27, 0.2);
+        }
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        @media (max-width: 900px) {
+            .wisdom-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+            .timeline {
+                flex-direction: column;
+            }
+            .timeline:before {
+                display: none;
+            }
+            .timeline-item {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+            .iconic-quote {
+                font-size: 2rem;
+            }
+            .iconic-quote .line1 {
+                font-size: 2.2rem;
+            }
+            .wisdom-translation {
+                font-size: 1.5rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
         }
         @media (max-width: 600px) {
-            body { padding: 10px; }
-            h1 { font-size: 2rem; }
-            .proclamation { font-size: 1rem; padding: 10px; }
+            .tab-btn {
+                padding: 12px 18px;
+                font-size: 1rem;
+            }
+            .iconic-quote {
+                font-size: 1.7rem;
+            }
+            .iconic-quote .line1 {
+                font-size: 1.9rem;
+            }
+            .wisdom-translation {
+                font-size: 1.4rem;
+            }
+            .wisdom-term {
+                font-size: 1.8rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .subtitle {
+                font-size: 1.3rem;
+            }
+        }
+        .crown-icon {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: block;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .header-border {
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            margin: 15px auto 25px;
+            width: 70%;
+            border-radius: 5px;
+            max-width: 400px;
+        }
+        .section-icon {
+            margin-right: 12px;
+            color: var(--primary);
         }
     </style>
 </head>
 <body>
     <header>
+        <i class="fas fa-crown crown-icon"></i>
         <h1>Queen Ranavalona I of Madagascar</h1>
-        <div class="subtitle">"Ranavalomanjaka" - The Sovereign Queen</div>
-        <div class="date">Commemorating Her Passing · August 16, 1861</div>
+        <div class="subtitle">Ranavalomanjaka - The Sovereign Queen</div>
+        <div class="date">Commemorating Her Reign · 1828-1861</div>
+        <div class="header-border"></div>
     </header>
 
+    <div class="quote-banner">
+        <div class="iconic-quote">
+            <span class="line1">I take what serves this land;</span>
+            <span class="line2">Scorn my ancestors, and I will strike it down.</span>
+        </div>
+        <div class="quote-author">- Queen Ranavalona I</div>
+    </div>
+    
+    <div class="wisdom-section">
+        <div class="wisdom-title">The Guiding Principle of Sovereignty</div>
+        
+        <div class="wisdom-translation">
+            "Mahasoa, mandrosoa. Mahamono, mòdia"
+        </div>
+
+        <div class="wisdom-grid">
+            <div class="wisdom-card mahasoa">
+                <div class="wisdom-term malagasy">Mahasoa</div>
+                <div class="wisdom-meaning">
+                    <strong>Beneficial:</strong> Foreign wisdom, knowledge, and skillset that can strengthen the nation
+                </div>
+            </div>
+            
+            <div class="wisdom-card mandrosoa">
+                <div class="wisdom-term malagasy">Mandrosoa</div>
+                <div class="wisdom-meaning">
+                    <strong>Welcome:</strong> Let it enter and advance within our nation for progress
+                </div>
+            </div>
+            
+            <div class="wisdom-card mahamono">
+                <div class="wisdom-term malagasy">Mahamono</div>
+                <div class="wisdom-meaning">
+                    <strong>Destructive:</strong> Anything harmful or incompatible with our sovereign nation's values
+                </div>
+            </div>
+            
+            <div class="wisdom-card modia">
+                <div class="wisdom-term malagasy">Mòdia</div>
+                <div class="wisdom-meaning">
+                    <strong>Expel:</strong> Send it home, reject it from our land to preserve our sovereignty
+                </div>
+            </div>
+        </div>
+        
+        <div class="wisdom-context">
+            Queen Ranavalona I's foundational principle for Madagascar: Selectively embrace beneficial foreign knowledge while protecting cultural sovereignty
+        </div>
+    </div>
+
     <section>
-        <h2>Historical Significance</h2>
+        <h2><i class="fas fa-landmark section-icon"></i> Historical Significance</h2>
         <p>Ranavalona I (c. 1788 - August 16, 1861) reigned as Queen of Madagascar for 33 years, fiercely defending Malagasy sovereignty against European colonialism. Her 1835 proclamation stands as a landmark declaration of cultural preservation and selective modernization.</p>
         
         <div class="historical-context">
-            "I accept knowledge that benefits this land; but if my ancestral customs are scorned, I will eradicate it."<br>
-            - Queen Ranavalona I
+            "The wisdom of 'Mahasoa, mandrosoa. Mahamono, mòdia' became the cornerstone of Ranavalona's reign. This philosophy allowed Madagascar to modernize its military and infrastructure while maintaining its cultural independence during the height of European colonial expansion."
         </div>
     </section>
 
     <section>
-        <h2>The 1835 Proclamation</h2>
+        <h2><i class="fas fa-scroll section-icon"></i> The 1835 Proclamation</h2>
         <p><strong>Date:</strong> Antananarivo, 26 February 1835<br>
         <strong>Recipients:</strong> "All foreigners, whether English or French"</p>
         
-        <div class="proclamation">
-Any ny vazaha rehetra na Anglisy na Frantsay,
+        <div class="proclamation-tabs">
+            <div class="tab-btn malagasy active">
+                Original Malagasy
+            </div>
+            <div class="tab-btn english">
+                English Translation
+            </div>
+            <div class="tab-btn french">
+                French Translation
+            </div>
+        </div>
+        
+        <div class="proclamation malagasy-text active" id="malagasy-proclamation">
+Any ny vazaha rehetra na Anglisy na frantsay,
 
 Ary lazaiko aminareo havako, fa noho ny soa nataonareo tamin'ny taniko sy ny fanjakako,
 nampianatra fahendrena sy fahalalana, dia misaotra anareo aho amin'izany, fa mamiko sy
@@ -151,35 +596,173 @@ tianareo hampianarina, ataovy fa tsara izany.
 Izany ary no teniko, ka tiako ho renareo havako.
         </div>
         
+        <div class="proclamation english-text" id="english-proclamation">
+To all foreigners, whether English or French,
+
+I say to you, my relatives, that because of the good you have done to my land and my kingdom,
+teaching wisdom and knowledge, I thank you for that, for I understand and know that.
+I have seen what you did during Radama's time, and if you do the same with me without changing,
+but continue what will improve this land.
+
+And I say to all foreigners too that if you still reside here in my land
+you may practice all your ancestral customs and traditions.
+Do not change, because I do not change your ancestral customs and practices, for good
+is what you have done to my land and my kingdom;
+but if that is done, if the law of my land is violated, 
+I will punish whoever does that, whoever it may be, and not only here,
+but anywhere, punishment to whoever breaks the law of the land.
+
+And not only that, but I declare clearly to you also, that if my people
+change the ancestral customs, the practices from the time of the Twelve Sacred Kings
+until Andrianampoinimerina and Radama, if that is changed, I will eradicate it, for what
+was established by my ancestors does not shame me nor frighten me.
+
+The wisdom and knowledge that should benefit this land, I accept that;
+but if my ancestral customs are scorned, even if the sun sets at noon, I will eradicate it.
+
+Therefore, concerning religion, whether Sunday or any day, baptism, societies, my people
+are not allowed to practice that here in my land;
+and you foreigners, if there are still crafts and wisdom that will benefit the nation
+that you wish to teach, do so, for that is good.
+
+That then is my word, and I wish that you hear it, my relatives.
+        </div>
+        
+        <div class="proclamation french-text" id="french-proclamation">
+À tous les étrangers, qu'ils soient Anglais ou Français,
+
+Je vous dis à vous, la parenté, qu'en raison du bien que vous avez fait à ma terre et à mon royaume,
+en enseignant la sagesse et la connaissance, je vous en remercie, car je le comprends et le sais.
+J'ai vu ce que vous avez fait à l'époque de Radama, et si vous faites de même avec moi sans changer,
+mais continuez ce qui améliorera cette terre.
+
+Et je dis aussi à tous les étrangers que si vous résidez encore ici dans ma terre,
+vous pouvez pratiquer toutes vos coutumes ancestrales et traditions.
+Ne changez pas, car je ne change pas vos coutumes ancestrales et pratiques, car le bien
+est ce que vous avez fait pour ma terre et mon royaume ;
+mais si cela est fait, si la loi de ma terre est violée,
+je punirai quiconque fait cela, quels qu'il soit, et pas seulement ici,
+mais partout, punition pour quiconque enfreint la loi du pays.
+
+Et non seulement cela, mais je déclare clairement à vous aussi, que si mon peuple
+change les coutumes ancestrales, les pratiques depuis l'époque des Douze Rois Sacrés
+jusqu'à Andrianampoinimerina et Radama, si cela est changé, je l'éradiquerai, car ce qui
+a été établi par mes ancêtres ne me fait pas honte ni ne m'effraie.
+
+La sagesse et la connaissance qui devraient profiter à ce pays, je l'accepte ;
+mais si mes coutumes ancestrales sont méprisées, même si le soleil se couche à midi, je l'éradiquerai.
+
+C'est pourquoi, en ce qui concerne la religion, que ce soit le dimanche ou n'importe quel jour, le baptême, les sociétés, mon peuple
+n'a pas le droit de pratiquer cela ici dans ma terre ;
+et vous, étrangers, s'il y a encore des métiers et une sagesse qui profiteront à la nation
+que vous souhaitez enseigner, faites-le, car cela est bon.
+
+Voilà donc ma parole, et je souhaite que vous l'entendiez, la parenté.
+        </div>
+        
         <div class="signature">Hoy Ranavalomanjaka<br>(Thus says the Reigning Ranavalona)</div>
+        
+        <div class="correction-note">
+            <strong>Important Notes:</strong>
+            <ul>
+                <li>The phrase "matiko izay manao izany" has been properly translated as "I will punish whoever does that" to reflect its true meaning in Malagasy when admonishing someone.</li>
+                <li>The French translation uses "la parenté" (kinship) instead of "mes parents" to better reflect the Malagasy concept of "havako" (my relatives).</li>
+            </ul>
+        </div>
     </section>
 
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-year">1788</div>
+            <div class="timeline-content">
+                <h3>Birth</h3>
+                <p>Born as Ramavo in Madagascar</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">1828</div>
+            <div class="timeline-content">
+                <h3>Coronation</h3>
+                <p>Became Queen Ranavalona I</p>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-year">1861</div>
+            <div class="timeline-content">
+                <h3>Passing</h3>
+                <p>Died after 33-year reign</p>
+            </div>
+        </div>
+    </div>
+
     <section class="observations">
-        <h2>Textual Notes</h2>
+        <h2><i class="fas fa-book section-icon"></i> Textual Notes</h2>
         <ul>
             <li><strong>Ilehidama</strong> - Alternate spelling of <em>Radama</em> (her predecessor)</li>
             <li><strong>fankakako</strong> - Archaic form of <em>fanjakako</em> (my kingdom)</li>
             <li><strong>olon-ko</strong> - <em>oloko</em> (my people)</li>
             <li><strong>ankobabandro</strong> - <em>ankabe andro</em> (any day)</li>
             <li><strong>Roambinifolo Manjaka</strong> - The Twelve Sacred Kings (Merina dynasty founders)</li>
+            <li><strong>matiko izay manao izany</strong> - Admonishing meaning: "I will punish whoever does that"</li>
+            <li><strong>Mahasoa, mandrosoa. Mahamono, mòdia</strong> - The foundational principle of Ranavalona's sovereignty policy</li>
         </ul>
     </section>
 
     <section>
-        <h2>Historical Legacy</h2>
-        <p>Queen Ranavalona I passed away on August 16, 1861, after a reign that:</p>
-        <ul>
+        <h2><i class="fas fa-monument section-icon"></i> Historical Legacy</h2>
+        <p>Queen Ranavalona I passed away on August 16, 1861, after a reign that established foundational principles of sovereignty and cultural preservation:</p>
+        <ul class="observations">
             <li>Preserved Madagascar's independence during Europe's colonial expansion</li>
             <li>Modernized the military while rejecting cultural colonization</li>
             <li>Established the principle of selective technological adoption</li>
             <li>Maintained Malagasy cultural traditions against foreign influence</li>
+            <li>Created a blueprint for anti-colonial resistance movements</li>
+            <li>Demonstrated female leadership in a male-dominated era</li>
+            <li>Developed the enduring philosophy of "Mahasoa, mandrosoa. Mahamono, mòdia"</li>
         </ul>
-        <p>Her 1835 proclamation remains a foundational document of Malagasy sovereignty and cultural resilience, studied by historians as an early example of anti-colonial resistance.</p>
+        <p>Her iconic declarations remain powerful statements of cultural sovereignty studied worldwide.</p>
     </section>
 
     <footer>
-        In remembrance of Ranavalona I, Queen of Madagascar (from 1828-1861)<br>
-        "Ny fahafatesana no fiovan'ny fiainana" - Death is but a change of life
+        In remembrance of Ranavalona I, Queen of Madagascar (1828-1861)<br>
+        A legacy of sovereignty and cultural preservation
     </footer>
+
+    <script>
+        // Tab functionality for proclamation
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const proclamations = document.querySelectorAll('.proclamation');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabBtns.forEach(b => b.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Hide all proclamations
+                proclamations.forEach(p => p.classList.remove('active'));
+                
+                // Show corresponding proclamation
+                if (btn.classList.contains('malagasy')) {
+                    document.getElementById('malagasy-proclamation').classList.add('active');
+                } else if (btn.classList.contains('english')) {
+                    document.getElementById('english-proclamation').classList.add('active');
+                } else if (btn.classList.contains('french')) {
+                    document.getElementById('french-proclamation').classList.add('active');
+                }
+            });
+        });
+        
+        // Add animation to wisdom cards
+        const wisdomCards = document.querySelectorAll('.wisdom-card');
+        wisdomCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
+            }, 300 + (index * 200));
+        });
+    </script>
 </body>
 </html>
